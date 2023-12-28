@@ -1,0 +1,15 @@
+
+GET http://localhost:3000/order
+
+###
+
+POST http://localhost:3000/order
+Content-Type: application/json
+
+{
+    "user_ID": "test",
+    "product_ID": ["test", "test", "test"],
+    "shipped": false,
+    "total_price": 43,
+    "date": "test"
+}
