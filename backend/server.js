@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require("express")
+const session = require('express-session');
 const app = express()
 const mongoose = require("mongoose")
 const {orderRoute} = require("./rsc/order/order.router")
@@ -7,6 +8,11 @@ const {productRoute} = require("./rsc/products/products.router")
 const {userRoute} = require("./rsc/user/user.router")
 const {categoryRoute} = require("./rsc/categories/categories.router")
 
+app.use(session({
+    secret: 'catWithACow',
+    resave: false,
+    saveUninitialized: true,
+  }));
 const apiKey = process.env.API_KEY;
 
 app.use(express.json())

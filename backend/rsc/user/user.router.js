@@ -1,7 +1,7 @@
 const {
   getUsers,
   createUser,
-  getUseryById,
+  logInUser,
   changeUser,
   deleteUser,
 } = require("./user.controller");
@@ -9,8 +9,8 @@ const express = require("express");
 const userRoute = express.Router();
 
 userRoute.get("/", getUsers);
-userRoute.post("/", createUser);
-userRoute.get("/:id", getUseryById);
+userRoute.post("/newuser", createUser);
+userRoute.get("/login/:id", logInUser);
 userRoute.post("/:id", changeUser);
 userRoute.delete("/:id", deleteUser);
 

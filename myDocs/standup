@@ -13,7 +13,7 @@ Det som tog tid var: Att sätta sig in i gammal kod och förstå vad som händer
 Något som jag har problem med är: Hur jag gör en säker koppling till databasen så att andra kommer åt den.
 Jag ska lösa mitt problem så här: Jag ska göra reasearch på hur man gör, annars fråga Linda
 Imorgon ska jag: Fixa så att man kan lägga till produkter i restfilen och lösa säker koppling till databasen.
-tid: 2.45h
+tid: 2h 45min
 
 28 dec 2024
 Idag har jag: Fixat alla GET och POST för products, user, orders och categories och dom fungerar i restfilen 
@@ -23,4 +23,18 @@ Något som jag har problem med är: Eventuellt hur andra ska kunna köra min app
 Jag ska lösa mitt problem så här: Jag tar det när det är dags för testning av appen.
 Imorgon ska jag: Lägga till cuantity i databasen på orders i product_ID  arrayen på något sätt, sedan fortsätta 
 med express-session och cookies.
-tid: 8.10h
+tid: 8h 10min
+
+29 dec 2024
+Idag har jag: Gjort klart crud och alla .rest-filer
+Det som tog tid var: Att kopiera allt då de flesta cruds ser lika dana ut.
+Något som jag har problem med är: Insåg att jag måste sätta mig in i hur jag ska bygga 
+login med validering, joi, cryptering, midleweres mm.
+Jag ska lösa mitt problem så här: Jag ska dela upp det i issues i github och 
+ta en sak i taget nästa vecka.
+På måndag ska jag: Lösa dom problemen bit för bit genom att titta på ett gammalt 
+projekt och använda chatGPT mm.
+tid: 7h 30min
+
+V.52 
+tid: 18 h 25min
