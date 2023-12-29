@@ -3,6 +3,10 @@ GET http://localhost:3000/order
 
 ###
 
+GET http://localhost:3000/order/658ecae35e350ccad79aea14 
+
+###
+
 POST http://localhost:3000/order
 Content-Type: application/json
 
@@ -13,3 +17,20 @@ Content-Type: application/json
     "total_price": 43,
     "date": "test"
 }
+
+###
+
+POST http://localhost:3000/order/658ecae35e350ccad79aea14
+Content-Type: application/json
+
+{
+    "user_ID": "test",
+    "product_ID": ["test", "test", "test"],
+    "shipped": true,
+    "total_price": 43,
+    "date": "test"
+}
+
+###
+
+DELETE http://localhost:3000/order/658ecae35e350ccad79aea14

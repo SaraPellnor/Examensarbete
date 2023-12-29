@@ -3,11 +3,34 @@ GET http://localhost:3000/user
 
 ###
 
+GET http://localhost:3000/user/658ea4918304df9ec3a9e585
+
+###
+
 POST http://localhost:3000/user
 Content-Type: application/json
 
 {
     "isAdmin": true,
-    "username": "Sara",
-    "password": "1234"
+    "email": "dfbgd@dfvd.com",
+    "username": "lisa",
+    "password": "123456"
 }
+
+###
+
+POST http://localhost:3000/user/658ed29d087697c0e6d305d3
+Content-Type: application/json
+
+{
+    "isAdmin": true,
+    "email": "dfbgd@dfvd.com",
+    "username": "linda",
+    "password": "123456"
+}
+
+###
+
+DELETE http://localhost:3000/user/658ea4918304df9ec3a9e585
+
+###

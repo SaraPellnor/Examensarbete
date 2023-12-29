@@ -3,6 +3,11 @@ GET http://localhost:3000/products
 
 ###
 
+
+GET http://localhost:3000/products/658e9c5a5c8c58dc93b49613
+
+###
+
 POST http://localhost:3000/products
 Content-Type: application/json
 
@@ -11,6 +16,26 @@ Content-Type: application/json
   "product_description": "test",
   "product_image": "test",
   "product_price": 678,
-  "inStock": 2345,
+  "in_stock": 2345,
   "category": ["test", "test", "test"]
 }
+
+###
+
+POST http://localhost:3000/products/658e8f568dc3d79b3d3b755b
+Content-Type: application/json
+
+{
+  "product_title": "Smörja",
+  "product_description": "test",
+  "product_image": "test",
+  "product_price": 678,
+  "in_stock": 2345,
+  "category": ["test", "test", "test"]
+}
+
+###
+
+DELETE http://localhost:3000/products/658ea38a8304df9ec3a9e582
+
+###
