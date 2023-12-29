@@ -3,6 +3,10 @@ GET http://localhost:3000/categories
 
 ###
 
+GET http://localhost:3000/categories/658eca6d5e350ccad79aea03
+
+###
+
 POST http://localhost:3000/categories
 Content-Type: application/json
 
@@ -11,3 +15,21 @@ Content-Type: application/json
     "category_description": "test",
     "category_image": "test"
 }
+
+
+###
+
+POST http://localhost:3000/categories/658eca6d5e350ccad79aea03
+Content-Type: application/json
+
+{
+    "category_title": "något fint",
+    "category_description": "test",
+    "category_image": "test"
+}
+
+###
+
+DELETE http://localhost:3000/categories/658eca6d5e350ccad79aea03
+
+###

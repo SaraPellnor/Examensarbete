@@ -19,8 +19,15 @@ app.use("/categories", categoryRoute)
 
 
 const init = async () => {
-    await mongoose.connect(`mongodb+srv://sarapellnor:${apiKey}@cluster0.qcltdmb.mongodb.net/`)
-    app.listen(3000, () => console.log("server is up and running at localhost 3000"))
-}
-init()
+    const dbName = 'examensarbete';
+    await mongoose.connect(`mongodb+srv://sarapellnor:${apiKey}@cluster0.qcltdmb.mongodb.net/${dbName}`, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    });
+
+    app.listen(3000, () => console.log("server is up and running at localhost 3000"));
+};
+
+init();
+
 
