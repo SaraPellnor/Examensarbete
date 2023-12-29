@@ -3,18 +3,18 @@ GET http://localhost:3000/user
 
 ###
 
-GET http://localhost:3000/user/658ea4918304df9ec3a9e585
+GET http://localhost:3000/user/login/658ed9b6ef52c4af9a468fcf
 
 ###
 
-POST http://localhost:3000/user
+POST http://localhost:3000/user/newuser
 Content-Type: application/json
 
 {
     "isAdmin": true,
-    "email": "dfbgd@dfvd.com",
-    "username": "lisa",
-    "password": "123456"
+    "email": "ninja@ninja.com",
+    "username": "ninja",
+    "password": "12345690"
 }
 
 ###

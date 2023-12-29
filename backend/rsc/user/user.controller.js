@@ -9,9 +9,14 @@ const getUsers = async (req, res, err) => {
   }
 };
 
-const getUseryById = async (req, res, err) => {
+const logInUser = async (req, res, err) => {
   try {
     const user = await UserModel.findById(req.params.id);
+    
+    req.session.user = {
+      isAdmin: user.isAdmin,
+      username: user.username,
+    };
     res.status(200).json(user);
   } catch (error) {
     res.error(400).json(err);
@@ -21,6 +26,7 @@ const getUseryById = async (req, res, err) => {
 const createUser = async (req, res) => {
   try {
     const user = await UserModel.create(req.body);
+
     res.status(201).json(user);
   } catch (error) {
     if (error.name === "ValidationError") {
@@ -54,4 +60,4 @@ const deleteUser = async (req, res, err) => {
   }
 };
 
-module.exports = { getUsers, createUser, getUseryById, changeUser, deleteUser };
+module.exports = { getUsers, createUser, logInUser, changeUser, deleteUser };
