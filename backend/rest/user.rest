@@ -3,7 +3,26 @@ GET http://localhost:3000/user
 
 ###
 
-GET http://localhost:3000/user/login/658ed9b6ef52c4af9a468fcf
+GET http://localhost:3000/user/658ed29d087697c0e6d305d3
+
+###
+
+POST http://localhost:3000/user/auth
+
+###
+
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+    "username": "jagju",
+    "password": "ofjfaeijeoinv"
+}
+
+###
+
+POST http://localhost:3000/user/logout
+
 
 ###
 
@@ -11,10 +30,10 @@ POST http://localhost:3000/user/newuser
 Content-Type: application/json
 
 {
-    "isAdmin": true,
-    "email": "ninja@ninja.com",
-    "username": "ninja",
-    "password": "12345690"
+    "isAdmin": false,
+    "email": "jag@jag.com",
+    "username": "jagju",
+    "password": "ofjfaeijeoinv"
 }
 
 ###
@@ -31,6 +50,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/user/658ea4918304df9ec3a9e585
-
-###
+DELETE http://localhost:3000/user/65940f818173860896136e1e
