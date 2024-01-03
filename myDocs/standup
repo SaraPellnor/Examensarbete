@@ -38,3 +38,12 @@ tid: 7h 30min
 
 V.52 
 tid: 18 h 25min
+
+2 jan 2024
+Idag har jag: Fixat middleweres.js med validering, joiSchema i user.model och satt på en cryptering på lösenorden. 
+Det som tog tid var: Jag fastnade på att /auth och /logout inte fungerade men sedan fick jag hjälp av min studubuddy efter 2 timmars
+felsök och hon löste det på 2 minuter. Det var bara att ändra från GET till POST på båda ställen. 
+Något som jag har problem med är: Inga problem längre.
+Jag ska lösa mitt problem så här: ---
+Imorgon ska jag: Städa koden och se över error.js-handling och påbärja product logic.
+tid: 7h 30min

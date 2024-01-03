@@ -1,53 +1,59 @@
-
+# Retrieve all users
 GET http://localhost:3000/user
 
 ###
 
+# Retrieve a specific user by ID
 GET http://localhost:3000/user/658ed29d087697c0e6d305d3
 
 ###
 
+# Authenticate user (unclear purpose, consider adding a comment)
 POST http://localhost:3000/user/auth
 
 ###
 
+# User login
 POST http://localhost:3000/user/login
 Content-Type: application/json
 
 {
-    "username": "jagju",
-    "password": "ofjfaeijeoinv"
-}
-
-###
-
-POST http://localhost:3000/user/logout
-
-
-###
-
-POST http://localhost:3000/user/newuser
-Content-Type: application/json
-
-{
-    "isAdmin": false,
-    "email": "jag@jag.com",
-    "username": "jagju",
-    "password": "ofjfaeijeoinv"
-}
-
-###
-
-POST http://localhost:3000/user/658ed29d087697c0e6d305d3
-Content-Type: application/json
-
-{
-    "isAdmin": true,
-    "email": "dfbgd@dfvd.com",
     "username": "linda",
     "password": "123456"
 }
 
 ###
 
-DELETE http://localhost:3000/user/65940f818173860896136e1e
+# User logout
+POST http://localhost:3000/user/logout
+
+###
+
+# Create a new user
+POST http://localhost:3000/user/newuser
+Content-Type: application/json
+
+{
+    "email": "linda@linda.com",
+    "username": "linda",
+    "password": "123456"
+}
+
+###
+
+# Create a new user
+POST http://localhost:3000/user/update/65958036ac93a938fb59d74a
+Content-Type: application/json
+
+{
+    "email": "linda@linda.com",
+    "username": "linda",
+    "password": "123456"
+}
+
+###
+
+# Delete a user by ID
+DELETE http://localhost:3000/user/6595736ede45c20c90f608f7
+
+###
