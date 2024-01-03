@@ -1,13 +1,43 @@
-const {getProducts, getProductsById, createProduct, changeProduct, deleteProduct} = require("./products.controller")
-const express = require("express")
-const productRoute = express.Router()
+// ---- Import Joi schema and controller functions from the specified file
 
-productRoute.get("/", getProducts)
-productRoute.get("/:id", getProductsById)
-productRoute.post("/", createProduct)
-productRoute.post("/:id", changeProduct)
-productRoute.delete("/:id", deleteProduct)
+const {
+    getProducts,
+    getProductsById,
+    createProduct,
+    changeProduct,
+    deleteProduct
+  } = require("./products.controller");
+const { productJoiSchema } = require("./products.model");
 
 
+// ---- Import validation middleware for use when needed
 
-module.exports = {productRoute}
+const { validation } = require("../middlewares");
+const express = require("express");
+  
+
+
+  // ---- Create an Express Router instance
+
+  const productRoute = express.Router();
+  
+
+
+  // ---- Define route handlers for different HTTP methods and paths
+  
+  productRoute.get("/", getProducts);
+  
+  productRoute.get("/:id", getProductsById);
+  
+  productRoute.post("/", validation(productJoiSchema), createProduct);
+  
+  productRoute.post("/:id", validation(productJoiSchema), changeProduct);
+  
+  productRoute.delete("/:id", deleteProduct);
+  
+
+
+  // ---- Export the productRoute for use in other files
+
+  module.exports = { productRoute };
+  
