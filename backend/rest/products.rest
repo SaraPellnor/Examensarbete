@@ -1,13 +1,14 @@
-
+# Retrieve all products
 GET http://localhost:3000/products
 
 ###
 
-
+# Retrieve a specific product by ID
 GET http://localhost:3000/products/658e9c5a5c8c58dc93b49613
 
 ###
 
+# Create a new product
 POST http://localhost:3000/products
 Content-Type: application/json
 
@@ -22,12 +23,13 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3000/products/658e8f568dc3d79b3d3b755b
+# Update an existing product by ID
+POST http://localhost:3000/products/658ea14773c205a896fbe052
 Content-Type: application/json
 
 {
   "product_title": "Smörja",
-  "product_description": "test",
+  "product_description": "mest",
   "product_image": "test",
   "product_price": 678,
   "in_stock": 2345,
@@ -36,6 +38,7 @@ Content-Type: application/json
 
 ###
 
+# Delete a product by ID
 DELETE http://localhost:3000/products/658ea38a8304df9ec3a9e582
 
 ###
