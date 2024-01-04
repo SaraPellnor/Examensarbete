@@ -1,9 +1,15 @@
+// ---- Import Joi for validation and Mongoose for database operations
+
 const Joi = require("joi");
 const { Schema, model, models } = require("mongoose");
 
+
+
+// ---- Create a Mongoose schema for users
+
 const userSchema = new Schema(
   {
-    isAdmin: { type: Boolean, required: false },
+    isAdmin: { type: Boolean, required: false }, 
     username: {
       type: String,
       required: true,
@@ -13,9 +19,9 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
-      required: false,
+      required: true,
       unique: true,
-      match: /^\S+@\S+\.\S+$/,
+      match: /^\S+@\S+\.\S+$/, // Simple email address validation
     },
     password: {
       type: String,
@@ -23,18 +29,27 @@ const userSchema = new Schema(
       minlength: 6,
     },
   },
-  { versionKey: false }
+  { versionKey: false } // Disable version key (_v) in documents
 );
 
-const joiSchema = Joi.object({
+
+
+// ---- Define a Joi schema to validate incoming data
+
+const userJoiSchema = Joi.object({
   username: Joi.string().alphanum().min(3).max(30).required(),
-  email: Joi.string().email({
-    minDomainSegments: 2,
-    tlds: { allow: ["com", "net", "se"] },
-  }),
-  password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
+  email: Joi.string().email().required(),
+  password: Joi.string().min(6).max(30).required(),
 });
+
+
+
+// ---- Create a Mongoose model for users based on the schema
 
 const UserModel = models.user || model("user", userSchema);
 
-module.exports = { UserModel, joiSchema };
+
+
+// ---- Export the model and Joi schema for use in other parts of the application
+
+module.exports = { UserModel, userJoiSchema };
