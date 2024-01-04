@@ -1,12 +1,14 @@
-
+# Retrieve all categories
 GET http://localhost:3000/categories
 
 ###
 
+# Retrieve a specific category by ID
 GET http://localhost:3000/categories/658eca6d5e350ccad79aea03
 
 ###
 
+# Create a new category
 POST http://localhost:3000/categories
 Content-Type: application/json
 
@@ -16,9 +18,9 @@ Content-Type: application/json
     "category_image": "test"
 }
 
-
 ###
 
+# Update an existing category by ID
 POST http://localhost:3000/categories/658eca6d5e350ccad79aea03
 Content-Type: application/json
 
@@ -30,6 +32,7 @@ Content-Type: application/json
 
 ###
 
+# Delete a category by ID
 DELETE http://localhost:3000/categories/658eca6d5e350ccad79aea03
 
 ###

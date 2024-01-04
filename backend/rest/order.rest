@@ -1,12 +1,14 @@
-
+# Retrieve all orders
 GET http://localhost:3000/order
 
 ###
 
-GET http://localhost:3000/order/658ecae35e350ccad79aea14 
+# Retrieve a specific order by ID
+GET http://localhost:3000/order/658ecae35e350ccad79aea14
 
 ###
 
+# Create a new order
 POST http://localhost:3000/order
 Content-Type: application/json
 
@@ -20,6 +22,7 @@ Content-Type: application/json
 
 ###
 
+# Update an existing order by ID
 POST http://localhost:3000/order/658ecae35e350ccad79aea14
 Content-Type: application/json
 
@@ -33,4 +36,7 @@ Content-Type: application/json
 
 ###
 
+# Delete an order by ID
 DELETE http://localhost:3000/order/658ecae35e350ccad79aea14
+
+###
