@@ -33,7 +33,7 @@ const getUserById = async (req, res, err) => {
 
 // ---- Check authentication based on user session
 
-const auth = (req, res, err) => {
+const isUserLoggedIn = (req, res, err) => {
   try {
     const loggedInUser = req.session.user;
 
@@ -67,6 +67,7 @@ const logInUser = async (req, res, err) => {
                 res.status(400).json("Incorrect password");
               } else {
                 req.session.user = {
+                  is_admin: user.isAdmin,
                   user_id: user._id.toString(),
                   username: user.username,
                 };
@@ -114,6 +115,7 @@ const createUser = async (req, res) => {
       ? res.status(400).json("Unable to create the user")
       : // Create a session variable with user ID
         (req.session.user = {
+          is_admin: user.isAdmin,
           user_id: newUser._id.toString(),
           username: user.username,
         });
@@ -145,7 +147,6 @@ const changeUser = async (req, res, err) => {
       : 
         res.status(200).json(user);
   } catch (error) {
-    console.error("Error updating user:", err);
     res.status(500).json({ error: "Server error" });
   }
 };
@@ -176,7 +177,7 @@ module.exports = {
   createUser,
   logInUser,
   logOutUser,
-  auth,
+  isUserLoggedIn,
   changeUser,
   deleteUser,
 };

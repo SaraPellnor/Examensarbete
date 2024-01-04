@@ -9,7 +9,7 @@ GET http://localhost:3000/products/658e9c5a5c8c58dc93b49613
 ###
 
 # Create a new product
-POST http://localhost:3000/products
+POST http://localhost:3000/create/products
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 ###
 
 # Update an existing product by ID
-POST http://localhost:3000/products/658ea14773c205a896fbe052
+POST http://localhost:3000/products/update/658ea14773c205a896fbe052
 Content-Type: application/json
 
 {
@@ -39,6 +39,6 @@ Content-Type: application/json
 ###
 
 # Delete a product by ID
-DELETE http://localhost:3000/products/658ea38a8304df9ec3a9e582
+DELETE http://localhost:3000/products/delete/658ea38a8304df9ec3a9e582
 
 ###

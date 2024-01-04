@@ -1,13 +1,41 @@
-const {Schema, model, models} = require("mongoose")
+const { Schema, model, models } = require("mongoose");
+const Joi = require("joi");
 
-const orderSchema = new Schema({
-    user_ID: {type: String, required: true},
-    product_ID: {type: Array, required: true},
-    shipped: {type: Boolean, required: true},
-    total_price: {type: Number, required: true},
-    date: {type: String, required: true}
-},{ versionKey: false })
 
-const OrderModel = models.order || model("order", orderSchema)
 
-module.exports = {OrderModel}
+// ---- Define the Mongoose schema for the order model
+
+const orderSchema = new Schema(
+  {
+    user_ID: { type: String, required: true },
+    product_ID: { type: Array, required: true },
+    shipped: { type: Boolean, required: true },
+    total_price: { type: Number, required: true },
+    date: { type: String, required: true },
+  },
+  { versionKey: false }
+);
+
+
+
+// ---- Create the Mongoose model for the order
+
+const OrderModel = models.order || model("order", orderSchema);
+
+
+
+// ---- Define the Joi schema for order validation
+
+const orderJoiSchema = Joi.object({
+  user_ID: Joi.string().required(),
+  product_ID: Joi.array().items(Joi.string()).required(),
+  shipped: Joi.boolean().required(),
+  total_price: Joi.number().required(),
+  date: Joi.string().required(),
+});
+
+
+
+// ---- Export both the Mongoose model and the Joi schema
+
+module.exports = { OrderModel, orderJoiSchema };

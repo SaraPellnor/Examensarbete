@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 // ---- Middleware function for general validation based on a Joi schema
 
->>>>>>> a38e7a61e903b7cfcc0f54606c8317dc8fcd0147
 const validation = (joiSchema) => {
   return (req, res, next) => {
     try {
@@ -21,23 +18,43 @@ const validation = (joiSchema) => {
   };
 };
 
-<<<<<<< HEAD
+
+
+// ---- checks if user is an admin
+
 const isAdmin = (req, res, next) => {
   try {
     const user = req.session.user;
-    console.log(user);
-    user.admin ? next() : res.status(400).json("you are not an admin, sorry");
+    !user.is_admin
+      ? res.status(400).json("you are not an admin, sorry")
+      : next();
   } catch (err) {
     res.status(400).json(err);
   }
 };
-=======
+
+
+
+// ---- Check authentication based on user session
+
+const auth = (req, res, next) => {
+  try {
+    const loggedInUser = req.session.user;
+
+    !loggedInUser
+      ? res.status(400).json("User is not logged in")
+      : next()
+  } catch (error) {
+    res.status(400).json(err);
+  }
+};
+
 
 
 // ---- Export the validation function for use in other parts of the application
->>>>>>> a38e7a61e903b7cfcc0f54606c8317dc8fcd0147
 
 module.exports = {
   validation,
   isAdmin,
+  auth,
 };
