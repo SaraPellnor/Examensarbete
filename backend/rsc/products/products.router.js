@@ -29,11 +29,11 @@ const express = require("express");
   
   productRoute.get("/:id", getProductsById);
   
-  productRoute.post("/", validation(productJoiSchema), createProduct);
+  productRoute.post("/create", validation(productJoiSchema), createProduct);
   
-  productRoute.post("/:id", validation(productJoiSchema), changeProduct);
+  productRoute.post("/update/:id", validation(productJoiSchema), changeProduct);
   
-  productRoute.delete("/:id", deleteProduct);
+  productRoute.delete("/delete/:id", deleteProduct);
   
 
 

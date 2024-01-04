@@ -4,12 +4,12 @@ GET http://localhost:3000/categories
 ###
 
 # Retrieve a specific category by ID
-GET http://localhost:3000/categories/658eca6d5e350ccad79aea03
+GET http://localhost:3000/categories/658ea56f8304df9ec3a9e587
 
 ###
 
 # Create a new category
-POST http://localhost:3000/categories
+POST http://localhost:3000/categories/create
 Content-Type: application/json
 
 {
@@ -21,7 +21,7 @@ Content-Type: application/json
 ###
 
 # Update an existing category by ID
-POST http://localhost:3000/categories/658eca6d5e350ccad79aea03
+POST http://localhost:3000/categories/update/6596b6a60b5a9bbdc2ca6138
 Content-Type: application/json
 
 {
@@ -33,6 +33,6 @@ Content-Type: application/json
 ###
 
 # Delete a category by ID
-DELETE http://localhost:3000/categories/658eca6d5e350ccad79aea03
+DELETE http://localhost:3000/categories/delete/658eca6d5e350ccad79aea03
 
 ###

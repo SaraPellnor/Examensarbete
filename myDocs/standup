@@ -59,3 +59,19 @@ Jag ska lösa mitt problem så här: ---
 Imorgon ska jag: Fortsätta med order logic och category logic och fixa joi schema för order och städa kod som jag gjort så att jag är typ klar med
 backend. Då har jag fredagen till att titta på lite andra saker. 
 tid: 9h 40min
+
+4 jan 2024
+Idag har jag: Lagt till grund för readmefilen, fixat order logic och category logic och städat kod.
+Det som tog tid var: Att få order logicen att fungera med isAdmin och auth.
+Något som jag har problem med är: Att få till quantity i order
+Jag ska lösa mitt problem så här: Genom att kika på gammla projekt och researcha
+Imorgon ska jag: Fixa quantity och påbörja frontend om jag hinner.
+tid: 6h 30min
+
+5 jan 2024
+Idag har jag: 
+Det som tog tid var: 
+Något som jag har problem med är: 
+Jag ska lösa mitt problem så här: 
+Imorgon ska jag: 
+tid: 
