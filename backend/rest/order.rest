@@ -15,7 +15,16 @@ Content-Type: application/json
 
 {
     "user_ID": "65968c881e59c32e5d747292",
-    "product_ID": ["test", "test", "test"],
+    "products": [{
+        "product_ID": "65968c881e59c32e5d747292",
+        "quantity": 3
+    },{
+        "product_ID": "65968c881e59c32e5d747292",
+        "quantity": 3
+    },{
+        "product_ID": "65968c881e59c32e5d747292",
+        "quantity": 3
+    }],
     "shipped": false,
     "total_price": 43,
     "date": "test"

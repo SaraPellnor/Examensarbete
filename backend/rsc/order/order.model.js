@@ -1,5 +1,14 @@
-const { Schema, model, models } = require("mongoose");
+const { Schema, model, models, Types } = require("mongoose");
 const Joi = require("joi");
+
+
+
+// ---- Define the schema for the products in orderSchema
+
+const productSchema = new Schema({
+  product_ID: { type: Types.ObjectId, ref: 'Product', required: true },
+  quantity: { type: Number, required: true },
+});
 
 
 
@@ -7,8 +16,8 @@ const Joi = require("joi");
 
 const orderSchema = new Schema(
   {
-    user_ID: { type: String, required: true },
-    product_ID: { type: Array, required: true },
+    user_ID: { type: Types.ObjectId, ref: 'User', required: true },
+    products: { type: [productSchema], required: true },
     shipped: { type: Boolean, required: true },
     total_price: { type: Number, required: true },
     date: { type: String, required: true },
@@ -28,7 +37,7 @@ const OrderModel = models.order || model("order", orderSchema);
 
 const orderJoiSchema = Joi.object({
   user_ID: Joi.string().required(),
-  product_ID: Joi.array().items(Joi.string()).required(),
+  products: Joi.array().items(Joi.object()).required(),
   shipped: Joi.boolean().required(),
   total_price: Joi.number().required(),
   date: Joi.string().required(),

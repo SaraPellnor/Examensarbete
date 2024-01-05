@@ -29,6 +29,10 @@ app.use(
     secret: "catWithACow", // Secret key used to sign the session ID cookie
     resave: false, // Do not save the session if it hasn't changed
     saveUninitialized: true, // Save new sessions
+    rolling: true, // Uppdate the maxAge when updat session
+    secure: true, // Onley HTTPS
+    httpOnly: true, // Onley HTTP
+    sameSite: 'Strict', // samesite for secure
     cookie: {
       maxAge: 3600000, // Session cookie will expire after 1 hour (in milliseconds)
     },
