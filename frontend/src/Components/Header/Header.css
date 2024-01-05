@@ -1,0 +1,75 @@
+header {
+  width: 75vw;
+  background-color: white;
+}
+.headerTop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 24px;
+  padding: 0px 10px;
+  background-color: #e6e3dc;
+}
+.iconDiv {
+  width: 150px;
+}
+
+.iconDiv > * {
+  width: 20px;
+  padding: 0 5px;
+  border-right: black solid 1px;
+}
+
+.offersDiv {
+  font-size: small;
+  text-align: center;
+}
+.headerBottom {
+  display: flex;
+  flex-direction: column;
+}
+.headerBottomTop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+  padding: 0px 10px;
+}
+.logoDiv {
+  width: 25%;
+}
+
+.logoDiv img {
+  width: 80%;
+}
+.searchDiv {
+  width: 50%;
+}
+.userIconsDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 25%;
+}
+.userIconsDiv > * {
+  border-right: #eaeff3 solid 1px;
+  padding: 0 5px;
+  width: 30px;
+
+}
+.headerBottomUnder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+.menuDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
