@@ -43,7 +43,8 @@ tid: 18 h 25min
 
 2 jan 2024
 Idag har jag: Fixat middleweres.js med validering, joiSchema i user.model och satt på en cryptering på lösenorden. 
-Det som tog tid var: Jag fastnade på att /auth och /logout inte fungerade men sedan fick jag hjälp av min studubuddy efter 2 timmars
+Det som tog tid var: Jag fastnade på att /auth och /logout inte fungerade men sedan fick jag hjälp av min studubuddy 
+efter 2 timmars
 felsök och hon löste det på 2 minuter. Det var bara att ändra från GET till POST på båda ställen. 
 Något som jag har problem med är: Inga problem längre.
 Jag ska lösa mitt problem så här: ---
@@ -51,12 +52,14 @@ Imorgon ska jag: Städa koden och se över error.js-handling och påbärja produ
 tid: 7h 30min
 
 3 jan 2024
-Idag har jag: Städat koden och kommit fram till att jag inte ska ha någon error.js fil. har fixat logicen och löst buggar för user och gjort
+Idag har jag: Städat koden och kommit fram till att jag inte ska ha någon error.js fil. har fixat logicen 
+och löst buggar för user och gjort
 fördigt logicen för products. 
 Det som tog tid var: Att felsöka buggarna för user logicen
 Något som jag har problem med är: inte för tillfället
 Jag ska lösa mitt problem så här: ---
-Imorgon ska jag: Fortsätta med order logic och category logic och fixa joi schema för order och städa kod som jag gjort så att jag är typ klar med
+Imorgon ska jag: Fortsätta med order logic och category logic och fixa joi schema för order 
+och städa kod som jag gjort så att jag är typ klar med
 backend. Då har jag fredagen till att titta på lite andra saker. 
 tid: 9h 40min
 
@@ -69,6 +72,21 @@ Imorgon ska jag: Fixa quantity och påbörja frontend om jag hinner.
 tid: 6h 30min
 
 5 jan 2024
+Idag har jag: Fixatfrontend react och componenter till header + testat på React-komponentbibliotek MUI. 
+Har även gjort en header mockup.
+Det som tog tid var: Att få till det rent stylingmässigt så att det liknar mockupen.
+Något som jag har problem med är: Att byta färg på MUI knapparna i menyn.
+Jag ska lösa mitt problem så här: Researcha lite mer på måndag sen, 
+om jag inte löser det så skiter jag i MUI eftersom styling inte är prio.
+På måndag ska jag: Slutföra headerstyle och fixa urlerna med react-router-dom, sen börja med footern om jag hinner.
+tid: 12h 20min
+
+V.1
+tid: 36h
+
+-----------------------------------------------------------------
+
+8 jan 2024
 Idag har jag: 
 Det som tog tid var: 
 Något som jag har problem med är: 
