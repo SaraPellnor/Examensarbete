@@ -1,4 +1,6 @@
 import Search from "../Search/Search";
+import Menu from "../Menu/Menu";
+
 
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -10,7 +12,6 @@ import { CiHeart } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 
 import "./Header.css";
-import CustomizedMenus from "../Menu/Menu";
 
 const Header = () => {
   return (
@@ -41,7 +42,7 @@ const Header = () => {
         </div>
         <div className="headerBottomUnder">
           <div className="menuDiv">
-            <CustomizedMenus />
+            <Menu />
           </div>
         </div>
       </div>

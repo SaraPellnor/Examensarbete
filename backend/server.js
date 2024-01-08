@@ -4,6 +4,10 @@ require("dotenv").config();
 
 
 
+//  ---- Import cors for to allow orgin to fetch from frontend
+
+const cors = require("cors")
+
 // ---- Import necessary libraries
 
 const express = require("express");
@@ -22,9 +26,12 @@ const { categoryRoute } = require("./rsc/categories/categories.router");
 
 
 
-// ---- Configure session middleware
+// ---- Configure cors and session middleware
 
 app.use(
+  cors({
+    origin: "*",
+  }),
   session({
     secret: "catWithACow", // Secret key used to sign the session ID cookie
     resave: false, // Do not save the session if it hasn't changed

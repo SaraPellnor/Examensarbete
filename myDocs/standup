@@ -87,9 +87,15 @@ tid: 36h
 -----------------------------------------------------------------
 
 8 jan 2024
-Idag har jag: 
-Det som tog tid var: 
-Något som jag har problem med är: 
-Jag ska lösa mitt problem så här: 
-Imorgon ska jag: 
-tid: 
+Idag har jag: Fortsatt på header layoute, löst alla categorier inklusive underkategorier i databasen. 
+Jag har gjort min första fetch från frontende till backend och fick lägga till cors för att det skulle fungera.
+Jag har suttit väldigt länge med att få till menyn och att den ska rendera ut en viss typ av kategori, 
+vilket ledde till att jag fick lägga till ett attribut till i alla kategorier; type. Det gjorde att
+jag visste vilka kategorier jag skulle rendera ut i huvudmenyn, och vilka som ska renderas ut i drawern när man trycker på menyn.
+Det som tog tid var: Att sätta koden så att det blev rädd och att lägga in kategorier i databasen och ändra på dom när det hade blivit fel. 
+Något som jag har problem med är: Något som var lite klurigt var hur jag skulle få menyns drawer att visa sig vid rätt tillfälle 
+och gömma sig vid rätt tillfälle, men jag löste det med en mouseleave och en funktion som jämför om den är aktiv eller inte. 
+Trycker man på att visa en anna kategori så öppnas den istället för att den stänger den gamla. 
+Jag ska lösa mitt problem så här: Jag skulle kunna göra på ett annat sätt genom att söka på andras lösningar men gillar ändå att jag löste det själv.
+Imorgon ska jag: Lägga in all produkter i databasen och rendera ut dessa sedan. Jag vill även börja med/och göra klart product detail. 
+tid: 11h 20min
