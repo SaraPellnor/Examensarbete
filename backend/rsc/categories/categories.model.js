@@ -7,8 +7,9 @@ const { Schema, model, models } = require("mongoose");
 // ---- Define the schema for the category model
 
 const categorySchema = new Schema({
+  type: { type: String, required: true },
   category_title: { type: String, required: true },
-  category_description: { type: String, required: true },
+  category_description: { type: Array, required: true },
   category_image: { type: String, required: true }
 }, { versionKey: false });  // Disable versioning (_v) in the schema
 

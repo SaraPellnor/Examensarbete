@@ -13,9 +13,16 @@ POST http://localhost:3000/categories/create
 Content-Type: application/json
 
 {
-    "category_title": "test",
-    "category_description": "test",
-    "category_image": "test"
+    "type": "menu",
+    "category_title": "KROPPSVÅRD",
+    "category_description": [
+"659bd0099cfceea267737a36",
+"659bd0ba9cfceea267737a38",
+"659bd0e99cfceea267737a3a",
+"659bd12a9cfceea267737a3c",
+"659bd16a9cfceea267737a3e"
+],
+    "category_image": "../../../src/assets/Logo.png"
 }
 
 ###
@@ -25,6 +32,7 @@ POST http://localhost:3000/categories/update/6596b6a60b5a9bbdc2ca6138
 Content-Type: application/json
 
 {
+    "type": "menu",
     "category_title": "något fint",
     "category_description": "test",
     "category_image": "test"

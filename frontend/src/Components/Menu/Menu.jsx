@@ -1,100 +1,78 @@
-import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Divider from '@mui/material/Divider';
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { IoMdArrowDropdown } from "react-icons/io";
 
-const StyledMenu = styled((props) => (
-  <Menu
-    elevation={0}
-    anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'right',
-    }}
-    transformOrigin={{
-      vertical: 'top',
-      horizontal: 'right',
-    }}
-    {...props}
-  />
-))(({ theme }) => ({
-  '& .MuiPaper-root': {
-    borderRadius: 6,
-    marginTop: theme.spacing(1),
-    minWidth: 180,
-    color:
-      theme.palette.mode === 'light' ? 'rgb(55, 65, 81)' : theme.palette.grey[300],
-    boxShadow:
-      'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
-    '& .MuiMenu-list': {
-      padding: '4px 0',
-    },
-    '& .MuiMenuItem-root': {
-      '& .MuiSvgIcon-root': {
-        fontSize: 18,
-        color: theme.palette.text.secondary,
-        marginRight: theme.spacing(1.5),
-      },
-      '&:active': {
-        backgroundColor: alpha(
-          theme.palette.primary.main,
-          theme.palette.action.selectedOpacity,
-        ),
-      },
-    },
-  },
-}));
+import "./Menu.css";
+import { useEffect, useState } from "react";
+const Menu = () => {
+  const getmenuList = async () => {
+    const data = await fetch("http://localhost:3000/categories/");
+    const res = await data.json();
+    const menuList = await res.filter((item) => item.type === "menu");
+    setMenuList(await menuList);
+    const ucList = await res.filter((item) => item.type === "uc");
+    setUCList(await ucList);
+  };
 
-export default function CustomizedMenus() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [drawerDisplay, setDrawerDisplay] = useState("none");
+  const [menuList, setMenuList] = useState([]);
+  const [ucList, setUCList] = useState([]);
+  const [activeUC, setActiveUC] = useState([]);
+  const [activeCategory, setActiveCategory] = useState("");
+
+  const openDrawer = (item) => {
+    setActiveUC(item.category_description);
+    setActiveCategory(item.category_title);
+    if (drawerDisplay == "none" && activeCategory == "") {
+      setDrawerDisplay("flex");
+      setActiveCategory(item.category_title);
+    } else if (
+      drawerDisplay == "flex" &&
+      activeCategory != (item.category_title || "")
+    ) {
+      setDrawerDisplay("flex");
+      setActiveCategory(item.category_title);
+    } else {
+      setDrawerDisplay("none");
+      setActiveCategory("");
+    }
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+
+  const handleOnMouseLeave = () => {
+    setDrawerDisplay("none");
+    setActiveCategory("");
   };
+
+  useEffect(() => {
+    getmenuList();
+  }, []);
 
   return (
-    <div>
-      <Button
-        id="demo-customized-button"
-        aria-controls={open ? 'demo-customized-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        variant="text"
-        color='#eaeff3'
-        disableElevation
-        onClick={handleClick}
-        endIcon={<MdKeyboardArrowDown />}
-      >
-        Options
-      </Button>
-      <StyledMenu
-        id="demo-customized-menu"
-        MenuListProps={{
-          'aria-labelledby': 'demo-customized-button',
-        }}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={handleClose} disableRipple>
-          Edit
-        </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
-          Duplicate
-        </MenuItem>
-        <Divider sx={{ my: 0.5 }} />
-        <MenuItem onClick={handleClose} disableRipple>
-          Archive
-        </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
-          More
-        </MenuItem>
-      </StyledMenu>
+    <div onMouseLeave={() => handleOnMouseLeave()} className="menu">
+      <ul>
+        <li>HEM</li>
+        {menuList.map((item) => (
+          <li onClick={() => openDrawer(item)} key={item._id}>
+            {item.category_title}
+            <IoMdArrowDropdown />
+          </li>
+        ))}
+      </ul>
+      <div className="menuDrawer" style={{ display: drawerDisplay }}>
+        <img src="../../../src/assets/handcare.jpg" alt="handcare" />
+
+        {activeUC.map((id) => {
+          const uc = ucList.find((item) => item._id == id);
+          return (
+            <div className={"ucDiv"} key={uc.category_title}>
+              <h6>{uc.category_title}</h6>
+              {uc.category_description.map((item) => (
+                <p key={item}>{item}</p>
+              ))}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
-}
+};
+
+export default Menu;
