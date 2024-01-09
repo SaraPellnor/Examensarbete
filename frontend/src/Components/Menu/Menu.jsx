@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom"
 import { IoMdArrowDropdown } from "react-icons/io";
 
 import "./Menu.css";
@@ -19,17 +20,19 @@ const Menu = () => {
   const [activeCategory, setActiveCategory] = useState("");
 
   const openDrawer = (item) => {
+    console.log(activeCategory);
+    console.log(item);
     setActiveUC(item.category_description);
-    setActiveCategory(item.category_title);
+    setActiveCategory(item);
     if (drawerDisplay == "none" && activeCategory == "") {
       setDrawerDisplay("flex");
-      setActiveCategory(item.category_title);
+      setActiveCategory(item);
     } else if (
       drawerDisplay == "flex" &&
-      activeCategory != (item.category_title || "")
+      activeCategory != (item || "")
     ) {
       setDrawerDisplay("flex");
-      setActiveCategory(item.category_title);
+      setActiveCategory(item);
     } else {
       setDrawerDisplay("none");
       setActiveCategory("");
@@ -48,7 +51,7 @@ const Menu = () => {
   return (
     <div onMouseLeave={() => handleOnMouseLeave()} className="menu">
       <ul>
-        <li>HEM</li>
+        <Link to={"/"}><li>HEM</li></Link>
         {menuList.map((item) => (
           <li onClick={() => openDrawer(item)} key={item._id}>
             {item.category_title}
@@ -57,7 +60,7 @@ const Menu = () => {
         ))}
       </ul>
       <div className="menuDrawer" style={{ display: drawerDisplay }}>
-        <img src="../../../src/assets/handcare.jpg" alt="handcare" />
+        <img src={`../../../src/assets/${activeCategory.category_image}`} alt={activeCategory.category_image} />
 
         {activeUC.map((id) => {
           const uc = ucList.find((item) => item._id == id);
