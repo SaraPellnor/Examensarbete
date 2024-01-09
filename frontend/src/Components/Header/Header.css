@@ -6,23 +6,41 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 24px;
-  padding: 0px 10px;
+  padding: 5px 10px;
   background-color: #e6e3dc;
 }
+
 .iconDiv {
-  width: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 7px;
 }
 
 .iconDiv > * {
-  width: 20px;
-  padding: 0 5px;
+  width: 30px;
+  padding: 0 7px;
   border-right: black solid 1px;
 }
 
 .offersDiv {
   font-size: small;
   text-align: center;
+  width: 100%;
+}
+
+.headerTop .language {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  padding: 7px;
+  font-size: small;
+  border-radius: 4px;
+}
+
+.headerTop .language:hover {
+  box-shadow: 0 1px 10px #c6c5c5;
 }
 .headerBottom {
   display: flex;
@@ -34,7 +52,7 @@ header {
   align-items: center;
   justify-content: space-between;
   height: 62px;
-  padding: 0px 10px;
+  padding: 25px;
 }
 .logoDiv {
   width: 25%;
@@ -42,6 +60,7 @@ header {
 
 .logoDiv img {
   width: 80%;
+  max-width: 175px;
 }
 .searchDiv {
   width: 50%;
@@ -58,7 +77,6 @@ header {
   border-right: #eaeff3 solid 1px;
   padding: 0 5px;
   width: 30px;
-
 }
 .headerBottomUnder {
   display: flex;
@@ -66,7 +84,8 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: auto;}
+  height: auto;
+}
 .menuDiv {
   display: flex;
   flex-direction: row;

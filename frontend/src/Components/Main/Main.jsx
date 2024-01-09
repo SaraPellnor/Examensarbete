@@ -6,12 +6,12 @@ import LoginPage from "../LoginPage/LoginPage"
 import "./Main.css"
 const Main = () => {
   return (
-    <div>
+    <div className="main">
       <Routes>
         <Route path="/" element={<ProductPage />} />
-        <Route path="/" element={<OrderPage />} />
-        <Route path="/" element={<DetailPage />} />
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/orders" element={<OrderPage />} />
+        <Route path="/details" element={<DetailPage />} />
+        <Route path="/login" element={<LoginPage />} />
 
       </Routes>
     </div>

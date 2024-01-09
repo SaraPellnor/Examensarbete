@@ -9,16 +9,16 @@ GET http://localhost:3000/products/658e9c5a5c8c58dc93b49613
 ###
 
 # Create a new product
-POST http://localhost:3000/create/products
+POST http://localhost:3000/products/create/
 Content-Type: application/json
 
 {
-  "product_title": "test",
-  "product_description": "test",
-  "product_image": "test",
-  "product_price": 678,
-  "in_stock": 2345,
-  "category": ["test", "test", "test"]
+  "product_title": "Shampoo Mentha",
+  "product_description": "Shampoo Mentha innehåller Pepparmynta och en speciell mjölksyra som motverkar mjäll och svamp. De milda, rengörande ingredienserna från majs och kokos torkar inte ut hår eller hårbotten. Istället återfår håret sin naturliga lyster, mjukhet och volym. Guarmjölet från Guarplantan gör det lättkammat. Produkten är naturligt självkonserverande.",
+  "product_image": "shampo.png",
+  "product_price": 199,
+  "in_stock": 100,
+  "category": ["659c0686874b9d9f09fd06c8", "659bd8659cfceea267737a6c", "659bd6d79cfceea267737a66"]
 }
 
 ###
