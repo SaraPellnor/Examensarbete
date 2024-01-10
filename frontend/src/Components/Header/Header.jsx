@@ -15,8 +15,13 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 import "./Header.css";
+import { useContext } from "react";
+import { OrderContext } from "../../Context/OrderContext";
 
 const Header = () => {
+
+const {cartNum} = useContext(OrderContext)
+
   return (
     <header>
       <div className="headerTop">
@@ -35,19 +40,20 @@ const Header = () => {
       </div>
       <div className="headerBottom">
         <div className="headerBottomTop">
-          
-            {" "}
-            <div className="logoDiv">
+          {" "}
+          <div className="logoDiv">
             <Link to={"/"}>
               <img src="../../../src/assets/Logo.png" alt="Logo" />
-              </Link>
-
-            </div>
+            </Link>
+          </div>
           <div className="searchDiv">
             <Search />
           </div>
           <div className="userIconsDiv">
-            <BsCart3 />
+            <div className="inCartDiv">
+              <div className="cartNum">{cartNum}</div>
+              <BsCart3 />
+            </div>
             <CiHeart />
             <CiUser />
           </div>

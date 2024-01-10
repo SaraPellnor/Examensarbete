@@ -4,7 +4,6 @@ header {
 }
 .headerTop {
   display: flex;
-  flex-direction: row;
   align-items: center;
   padding: 5px 10px;
   background-color: #e6e3dc;
@@ -48,19 +47,20 @@ header {
 }
 .headerBottomTop {
   display: flex;
-  flex-direction: row;
+  gap: 15px;
   align-items: center;
-  justify-content: space-between;
-  height: 62px;
   padding: 25px;
 }
 .logoDiv {
+  display: flex;
+  align-items: center;
   width: 25%;
 }
 
 .logoDiv img {
-  width: 80%;
+  width: 100%;
   max-width: 175px;
+  min-width: 93px;
 }
 .searchDiv {
   width: 50%;
@@ -78,6 +78,29 @@ header {
   padding: 0 5px;
   width: 30px;
 }
+
+.inCartDiv {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 16px;
+}
+
+.cartNum {
+  position: absolute;
+  right: 3%;
+  top: -4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #7f9b9d;
+  color: white;
+  font-size: 10px;
+}
+
 .headerBottomUnder {
   display: flex;
   flex-direction: row;
