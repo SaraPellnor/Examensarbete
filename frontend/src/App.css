@@ -12,3 +12,38 @@
   align-items: center;
   background-color: #f0eeea;
 }
+
+/* Removes the arrows in the number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* Mobile screens */
+@media screen and (max-width: 600px) {
+  div {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .productCard {
+    width: 100%;
+  }
+  
+  .logoDiv img {
+
+    min-width: 240px;
+  }
+
+  img {
+    width: 90%;
+    min-width: 88px;
+  }
+
+  svg {
+    min-width: 27px;
+  }
+  
+}

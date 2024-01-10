@@ -107,3 +107,12 @@ Något som jag har problem med är: Att fixa produkt detail.
 Jag ska lösa mitt problem så här: Ska kika på gamla projekt.
 Imorgon ska jag: Fortsätta med detail page
 tid: 7h 50min
+
+
+xx xxx xxxx
+Idag har jag: Testat Slugify, men valde att avvakta då jag vill få färdigt det viktigaste. Den är dock installerad. Jag har suttit med responsiviteten och och använt mycket procent och display flex, Jag har fixat alla context så att dom fungerar, jag har gjort detailpage klar baserad på dess mockup, man kan lägga varor i varukorgen och dom skickas upp till LS, dock håller jag fortfarande på med CartNum i Header. Jag har skapat ett ProductCard istället för att koda allt i ProductPage.
+Det som tog tid var: Allt har tagit tid men speciellt logiken och context. 
+Något som jag har problem med är: At uppdatera Header cartnum när man lägger till en produkt i cart.
+Jag ska lösa mitt problem så här: Jag måste få heder att renderas om när jag trycker på addToCart, ska kika på gamla projekt om jag inte kommer på hur man gör.
+Imorgon ska jag: Slutföra Header CartNum, sen ska jag göra en cart drawer och en inloggningssida. Om jag hinner så börjar jag på order page också... 
+tid: 12h 50min
