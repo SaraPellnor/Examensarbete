@@ -109,7 +109,7 @@ Imorgon ska jag: Fortsätta med detail page
 tid: 7h 50min
 
 
-xx xxx xxxx
+10 jan 2024
 Idag har jag: Testat Slugify, men valde att avvakta då jag vill få färdigt det viktigaste. Den är dock installerad. Jag har suttit med responsiviteten och och använt mycket procent och display flex, Jag har fixat alla context så att dom fungerar, jag har gjort detailpage klar baserad på dess mockup, man kan lägga varor i varukorgen och dom skickas upp till LS, dock håller jag fortfarande på med CartNum i Header. Jag har skapat ett ProductCard istället för att koda allt i ProductPage.
 Det som tog tid var: Allt har tagit tid men speciellt logiken och context. 
 Något som jag har problem med är: At uppdatera Header cartnum när man lägger till en produkt i cart.
