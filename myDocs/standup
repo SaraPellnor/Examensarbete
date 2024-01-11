@@ -116,3 +116,11 @@ Något som jag har problem med är: At uppdatera Header cartnum när man lägger
 Jag ska lösa mitt problem så här: Jag måste få heder att renderas om när jag trycker på addToCart, ska kika på gamla projekt om jag inte kommer på hur man gör.
 Imorgon ska jag: Slutföra Header CartNum, sen ska jag göra en cart drawer och en inloggningssida. Om jag hinner så börjar jag på order page också... 
 tid: 12h 50min
+
+11 jan 2024
+Idag har jag: Idag har jag gjort login och registreringssidan. det skickas en förfrågan till login men det sätts ingen session.user i cookies. Vet inte varför. Får kolla på detta imorgon. Pga detta så fungerar inte auth.
+Det som tog tid var: Att felsöka session och cookie. Det är jag fortfarande inte klar med.
+Något som jag har problem med är:Session och Cookies i frontend.
+Jag ska lösa mitt problem så här:Jag ska fråga mina pluggkompisar imorgon.
+Imorgon ska jag: Jag ska slutföra loginsidan och logiken, sen ska jag göra en cart drawer. Om jag hinner så börjar jag på order page också... 
+tid: 7h
