@@ -6,7 +6,7 @@ export const OrderContext = createContext();
 export const OrderProvider = ({ children }) => {
   const [orders, setOrders] = useState([]);
   const [cart, setCart] = useState([]);
-  const [cartNum, setCartNum] = useState();
+  const [cartNum, setCartNum] = useState(0);
 
   const getOrders = async () => {
     const data = await fetch("http://localhost:3000/order/");
@@ -28,16 +28,17 @@ export const OrderProvider = ({ children }) => {
 
     localStorage.setItem("cart", JSON.stringify(cart));
     setCart(cart);
+    setCartNum(cart.length);
   };
 
   const conectToLS = () => {
     const inCart = JSON.parse(localStorage.getItem("cart"));
-    console.log(inCart);
-    !inCart
-      ? localStorage.setItem("cart", "[]")
-      : setCart(inCart);
-    console.log(inCart.length);
-    setCartNum(inCart.length);
+    if (!inCart) {
+      localStorage.setItem("cart", "[]");
+    } else {
+      setCart(inCart);
+      setCartNum(inCart.length);
+    }
   };
 
   useEffect(() => {
