@@ -28,16 +28,6 @@ header {
   width: 100%;
 }
 
-.headerTop .language {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
-  padding: 7px;
-  font-size: small;
-  border-radius: 4px;
-}
-
 .headerTop .language:hover {
   box-shadow: 0 1px 10px #c6c5c5;
 }
@@ -79,7 +69,7 @@ header {
   width: 30px;
 }
 
-.inCartDiv {
+.inCartDiv  {
   position: relative;
   display: flex;
   align-items: center;
@@ -88,8 +78,8 @@ header {
 
 .cartNum {
   position: absolute;
-  right: 3%;
-  top: -4px;
+  right: -5px;
+  top: -7px;
   display: flex;
   align-items: center;
   justify-content: center;

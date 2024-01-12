@@ -19,15 +19,15 @@ const categoryRoute = express.Router();
 
 // ---- Assign different HTTP methods to respective controller functions
 
-categoryRoute.get("/", getCategories);
+categoryRoute.get("/categories/", getCategories);
 
-categoryRoute.post("/create", createCategory);
+categoryRoute.post("/categories/create", createCategory);
 
-categoryRoute.post("/update/:id", changeCategory);
+categoryRoute.post("/categories/update/:id", changeCategory);
 
-categoryRoute.get("/:id", getCategoryById);
+categoryRoute.get("/categories/:id", getCategoryById);
 
-categoryRoute.delete("/delete/:id", deleteCategory);
+categoryRoute.delete("/categories/delete/:id", deleteCategory);
 
 
 

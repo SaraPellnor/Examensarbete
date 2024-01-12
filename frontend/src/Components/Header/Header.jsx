@@ -10,17 +10,15 @@ import { BsCart3 } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 
-import { GrLanguage } from "react-icons/gr";
-import { IoMdArrowDropdown } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 import "./Header.css";
 import { useContext } from "react";
 import { OrderContext } from "../../Context/OrderContext";
+import LangBtn from "../LangBtn/LangBtn";
 
 const Header = () => {
-
-const {cartNum} = useContext(OrderContext)
+  const { cartNum } = useContext(OrderContext);
 
   return (
     <header>
@@ -34,13 +32,10 @@ const {cartNum} = useContext(OrderContext)
         <div className="offersDiv">
           Fri frakt i Sverige när du handlar för över 599 SEK
         </div>
-        <div className="language">
-          <GrLanguage /> Svenska <IoMdArrowDropdown />
-        </div>
+<LangBtn />
       </div>
       <div className="headerBottom">
         <div className="headerBottomTop">
-          {" "}
           <div className="logoDiv">
             <Link to={"/"}>
               <img src="../../../src/assets/Logo.png" alt="Logo" />
@@ -50,12 +45,15 @@ const {cartNum} = useContext(OrderContext)
             <Search />
           </div>
           <div className="userIconsDiv">
-            <div className="inCartDiv">
-              <div className="cartNum">{cartNum}</div>
-              <BsCart3 />
-            </div>
+            <Link to={"/cart"}>
+              
+              <div className="inCartDiv">
+                <div className="cartNum">{cartNum}</div>
+                <BsCart3 />
+              </div>
+            </Link>
             <CiHeart />
-            <CiUser />
+            <Link to={"/orders"}><CiUser /></Link>
           </div>
         </div>
         <div className="headerBottomUnder">

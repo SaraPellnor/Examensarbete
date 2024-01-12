@@ -9,10 +9,9 @@ export const OrderProvider = ({ children }) => {
   const [cartNum, setCartNum] = useState(0);
 
   const getOrders = async () => {
-    const data = await fetch("http://localhost:3000/order/");
+    const data = await fetch("http://localhost:3000/app/order");
     const res = await data.json();
     setOrders(res);
-    console.log(orders);
   };
 
   const addToCart = (product, quantity) => {
@@ -31,6 +30,43 @@ export const OrderProvider = ({ children }) => {
     setCartNum(cart.length);
   };
 
+  const shippedFunction = async (order) => {
+    try {
+      const { _id, ...orderWithoutId } = order;
+
+      await fetch(`http://localhost:3000/app/order/update/${_id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ ...orderWithoutId, shipped: !order.shipped }),
+      });
+      getOrders();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //DOSENT WORK--------------------------------------------
+  const orderRemove = async (id) => {
+    console.log(id);
+    try {
+      const data = await fetch(`http://localhost:3000/app/order/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const res = await data.json();
+      console.log(res, " order is removed!");
+      getOrders();
+    } catch (error) {
+      console.log("Error in orderRemove: ", error);
+    }
+  };
+
   const conectToLS = () => {
     const inCart = JSON.parse(localStorage.getItem("cart"));
     if (!inCart) {
@@ -43,11 +79,23 @@ export const OrderProvider = ({ children }) => {
 
   useEffect(() => {
     conectToLS();
-    getOrders();
   }, []);
 
   return (
-    <OrderContext.Provider value={{ addToCart, cartNum }}>
+    <OrderContext.Provider
+      value={{
+        addToCart,
+        cartNum,
+        setCartNum,
+        cart,
+        setCart,
+        getOrders,
+        orders,
+        setOrders,
+        shippedFunction,
+        orderRemove,
+      }}
+    >
       {children}
     </OrderContext.Provider>
   );
