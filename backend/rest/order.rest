@@ -1,30 +1,30 @@
 # Retrieve all orders
-GET http://localhost:3000/order
+GET http://localhost:3000/app/order
 
 ###
 
 
 # Retrieve a specific order by ID
-GET http://localhost:3000/order/658ecae35e350ccad79aea14
+GET http://localhost:3000/app/order/658ecae35e350ccad79aea14
 
 ###
 
 # Create a new order
-POST http://localhost:3000/order/create
+POST http://localhost:3000/app/order/create
 Content-Type: application/json
 
 {
-    "user_ID": "65968c881e59c32e5d747292",
-    "product_ID": ["test", "test", "test"],
+    "user_ID": "6596750249923593103ce431",
+    "product_ID": ["659d3071ff5079eaa9154a63", "659d318c11a3361a36d55d0a", "659d329511a3361a36d55d0c"],
     "shipped": false,
     "total_price": 43,
-    "date": "test"
+    "date": "24 mars 2024"
 }
 
 ###
 
 # Update an existing order by ID
-POST http://localhost:3000/order/update/6596ad481c211e0a1e8a8da3
+POST http://localhost:3000/app/order/update/6596ad481c211e0a1e8a8da3
 Content-Type: application/json
 
 {
@@ -38,6 +38,6 @@ Content-Type: application/json
 ###
 
 # Delete an order by ID
-DELETE http://localhost:3000/order/delete/6596ad481c211e0a1e8a8da3
+DELETE http://localhost:3000/app/order/delete/65a11946fb51d54726f5ba95
 
 ###

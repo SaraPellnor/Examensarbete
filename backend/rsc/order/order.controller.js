@@ -7,20 +7,24 @@ const { OrderModel } = require("./order.model");
 // --- Route handler to get orders based on user role (admin or regular user)
 
 const getOrders = async (req, res, err) => {
-  let orders;
-  try {
-    // Check if the user is an admin
-    req.session.user.is_admin == true
-      ? (orders = await OrderModel.find()) 
-      : (orders = await OrderModel.find({ user_ID: req.session.user.user_id }));
+  // HIDE WHEN AUTH WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  orders = await OrderModel.find()
+  res.status(200).json(orders); 
 
-    // Check if orders were found
-    !orders
-      ? res.status(400).json("Finns inga ordrar")
-      : res.status(200).json(orders); 
-  } catch (error) {
-    res.status(400).json(err);
-  }
+  // let orders;
+  // try {
+  //   // Check if the user is an admin
+  //   req.session.user.is_admin == true
+  //     ? (orders = await OrderModel.find()) 
+  //     : (orders = await OrderModel.find({ user_ID: req.session.user.user_id }));
+
+  //   // Check if orders were found
+  //   !orders
+  //     ? res.status(400).json("Finns inga ordrar")
+  //     : res.status(200).json(orders); 
+  // } catch (error) {
+  //   res.status(400).json(err);
+  // }
 };
 
 

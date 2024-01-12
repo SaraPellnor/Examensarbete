@@ -25,15 +25,15 @@ const express = require("express");
 
   // ---- Define route handlers for different HTTP methods and paths
   
-  productRoute.get("/", getProducts);
+  productRoute.get("/products/", getProducts);
   
-  productRoute.get("/:id", getProductsById);
+  productRoute.get("/products/:id", getProductsById);
   
-  productRoute.post("/create", validation(productJoiSchema), createProduct);
+  productRoute.post("/products/create", validation(productJoiSchema), createProduct);
   
-  productRoute.post("/update/:id", validation(productJoiSchema), changeProduct);
+  productRoute.post("/products/update/:id", validation(productJoiSchema), changeProduct);
   
-  productRoute.delete("/delete/:id", deleteProduct);
+  productRoute.delete("/products/delete/:id", deleteProduct);
   
 
 

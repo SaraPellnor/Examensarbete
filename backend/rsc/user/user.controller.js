@@ -34,12 +34,13 @@ const getUserById = async (req, res, err) => {
 // ---- Check authentication based on user session
 
 const isUserLoggedIn = (req, res, err) => {
+  console.log(req.sessinStore);
   try {
     const loggedInUser = req.session.user;
-
+    console.log(loggedInUser);
     !loggedInUser
-      ? res.status(400).json("User is not logged in")
-      : res.status(200).json(req.session);
+      ? res.status(200).json("User is not logged in")
+      : res.status(200).json(loggedInUser);
   } catch (error) {
     res.status(400).json(err);
   }
@@ -71,7 +72,7 @@ const logInUser = async (req, res, err) => {
                   user_id: user._id.toString(),
                   username: user.username,
                 };
-                res.status(200).json(`User with username: "${user.username}" is logged in`);
+                res.status(200).json(req.session.user);
               }
             }
           }

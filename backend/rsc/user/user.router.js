@@ -10,7 +10,7 @@ const {
   deleteUser,
   isUserLoggedIn,
 } = require("./user.controller");
-const {auth} = require("../middlewares")
+// const {auth} = require("../middlewares")
 
 const { userJoiSchema } = require("./user.model");
 
@@ -31,14 +31,14 @@ const userRoute = express.Router();
 
 // ---- Assign different HTTP methods to respective controller functions
 
-userRoute.get("/", getUsers); 
-userRoute.get("/:id", getUserById);
-userRoute.post("/auth", isUserLoggedIn);
-userRoute.post("/create", validation(userJoiSchema), createUser); 
-userRoute.post("/login", logInUser); 
-userRoute.post("/logout", logOutUser);
-userRoute.post("/update/:id", validation(userJoiSchema), changeUser);
-userRoute.delete("/delete:id", deleteUser); 
+userRoute.get("/user/auth", isUserLoggedIn);
+userRoute.get("/user/", getUsers); 
+userRoute.get("/user/:id", getUserById);
+userRoute.post("/user/create", validation(userJoiSchema), createUser); 
+userRoute.post("/user/login", logInUser); 
+userRoute.post("/user/logout", logOutUser);
+userRoute.post("/user/update/:id", validation(userJoiSchema), changeUser);
+userRoute.delete("/user/delete:id", deleteUser); 
 
 
 

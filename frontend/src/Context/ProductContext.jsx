@@ -9,13 +9,13 @@ export const ProductProvider = ({children}) => {
   const [productDetail, setProductDetail] = useState({})
 
   const getProducts = async () => {
-    const data = await fetch("http://localhost:3000/products/");
+    const data = await fetch("http://localhost:3000/app/products/");
     const res = await data.json();
     setProducts(res);
   };
 
   const getProductDetails = async (id) => {
-    const data = await fetch(`http://localhost:3000/products/${id.id}`);
+    const data = await fetch(`http://localhost:3000/app/products/${id.id}`);
     const res = await data.json();
     setProductDetail(res);
   };

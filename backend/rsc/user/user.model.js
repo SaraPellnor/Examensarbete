@@ -37,7 +37,7 @@ const userSchema = new Schema(
 // ---- Define a Joi schema to validate incoming data
 
 const userJoiSchema = Joi.object({
-  isAdmin: Joi.boolean().required(),
+  isAdmin: Joi.boolean(),
   username: Joi.string().alphanum().min(3).max(30).required(),
   email: Joi.string().email().required(),
   password: Joi.string().min(6).max(30).required(),
