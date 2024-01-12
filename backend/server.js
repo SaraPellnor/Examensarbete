@@ -12,6 +12,10 @@ const cors = require("cors")
 
 const express = require("express");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
+
+
+
 const app = express();
 const mongoose = require("mongoose");
 
@@ -25,29 +29,29 @@ const { userRoute } = require("./rsc/user/user.router");
 const { categoryRoute } = require("./rsc/categories/categories.router");
 
 
-
 // ---- Configure cors and session middleware
 
 app.use(
   cors({
-    origin: "*",
+    origin: "http://localhost:5173",
+    credentials: true,
   }),
+  cookieParser(),
   session({
-    secret: "catWithACow", // Secret key used to sign the session ID cookie
+    secret: process.env.SESSION_CONNECTION_KEY, // Secret key used to sign the session ID cookie
     resave: false, // Do not save the session if it hasn't changed
     saveUninitialized: true, // Save new sessions
     cookie: {
-      maxAge: 3600000, // Session cookie will expire after 1 hour (in milliseconds)
+      maxAge: 3600000,
+      secure: false, httpOnly: true, sameSite: 'None' // Session cookie will expire after 1 hour (in milliseconds)
     },
   })
 );
 
 
-
 // ---- Get connection url to mongoDB from environment variables
 
 const mongoDBConnection = process.env.DB_CONNECTION_URL
-
 
 
 // ---- Parse incoming JSON requests
@@ -58,10 +62,10 @@ app.use(express.json());
 
 // ---- Define routes for different resources
 
-app.use("/user", userRoute);
-app.use("/order", orderRoute);
-app.use("/products", productRoute);
-app.use("/categories", categoryRoute);
+app.use("/app", userRoute);
+app.use("/app", orderRoute);
+app.use("/app", productRoute);
+app.use("/app", categoryRoute);
 
 
 

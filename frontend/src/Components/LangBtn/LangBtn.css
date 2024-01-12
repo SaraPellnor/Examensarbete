@@ -1,0 +1,10 @@
+ .language {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    padding: 7px;
+    font-size: small;
+    border-radius: 4px;
+    cursor: pointer;
+  }

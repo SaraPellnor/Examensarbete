@@ -124,3 +124,16 @@ Något som jag har problem med är:Session och Cookies i frontend.
 Jag ska lösa mitt problem så här:Jag ska fråga mina pluggkompisar imorgon.
 Imorgon ska jag: Jag ska slutföra loginsidan och logiken, sen ska jag göra en cart drawer. Om jag hinner så börjar jag på order page också... 
 tid: 7h
+
+12 jan 2024
+Idag har jag: Gjort klart orderpage och typ login och create user och footern. det är bara authen som inte fungerar av någon anledning, när jag skickar en session till backend så sätts den inte om jag skickar den från frontend, men om jag skickar den i backend så sätts den. Det kan bero på säkerheten eller något annat. Har testat många olika saker, tex. la jag till /app/ i endpointen så att jag kunde lägga till proxy i vite.config men det fungerar ändå inte. Den enda skillnaden jag kan komma på från andra projekt där det fungerat, är att jag använder express session och inte cookie session. 
+Det som tog tid var: Idag har det varit mycket css som tagit tid ut över session problemet. 
+Något som jag har problem med är:Det är ju den där session i auth.
+Jag ska lösa mitt problem så här: Jag och Linda ska sitta med samma sak på måndag så då blir det en hjärna till, ska även testa att använda cookie session istället annars fråga läraren.
+På måndag ska jag: Påbörja Stripe om jag inte fastnar med session...
+tid: 12h 40min
+
+V.1
+tid: 51h 45min
+----------------------------------------------------------------
+

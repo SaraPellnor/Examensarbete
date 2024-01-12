@@ -1,0 +1,99 @@
+.orderPage {
+    width: 100%;
+    background-color: white;
+  }
+  
+  .orderPageDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    width: 100%;
+    border-top: 1px solid #ededed;
+  }
+
+  .orderInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .order {
+    border-bottom: 2px solid #ededed;
+    padding: 5px;
+
+  }
+
+  .product {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 10px;
+    width: 100%;
+    /* border-top: 1px solid #ededed; */
+  }
+
+  .product:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .product img {
+    border: 1px solid #ededed;
+    padding: 7px;
+    width: 50px;
+    background-color: white;
+  }
+  
+  .product .productInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 75%;
+  }
+  .product .productPrice {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-weight: bold;
+  }
+  
+  .product .productPrice .quantity {
+    background-color: #f8f9fa;
+    border: 1px solid #ededed;
+    width: 35px;
+    text-align: center;
+  }
+  
+  .orderPageDivBottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 35px;
+  }
+
+  .orderRemove {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px;
+    color: red;
+    background-color: white;
+    border: 1px red solid;
+    border-radius: 5px;
+
+  }
+
+  .orderPageBottom {
+    padding: 20px;
+  }
+  
+  .returnBtn {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: #bfcdce;
+
+  }
+  

@@ -1,20 +1,20 @@
 # Retrieve all users
-GET http://localhost:3000/user
+GET http://localhost:3000/app/user
 
 ###
 
 # Retrieve a specific user by ID
-GET http://localhost:3000/user/658ed29d087697c0e6d305d3
+/appGET http://localhost:3000/user/658ed29d087697c0e6d305d3
 
 ###
 
 # Authenticate user (unclear purpose, consider adding a comment)
-POST http://localhost:3000/user/auth
+GET http://localhost:3000/app/user/auth
 
 ###
 
 # User login
-POST http://localhost:3000/user/login
+POST http://localhost:3000/app/user/login
 Content-Type: application/json
 
 {
@@ -25,7 +25,7 @@ Content-Type: application/json
 ###
 
 # User login
-POST http://localhost:3000/user/login
+POST http://localhost:3000/app/user/login
 Content-Type: application/json
 
 {
@@ -38,12 +38,12 @@ Content-Type: application/json
 ###
 
 # User logout
-POST http://localhost:3000/user/logout
+POST http://localhost:3000/app/user/logout
 
 ###
 
 # Create a new user
-POST http://localhost:3000/user/create
+POST http://localhost:3000/app/user/create
 Content-Type: application/json
 
 {
@@ -56,7 +56,7 @@ Content-Type: application/json
 ###
 
 # Update a new user
-POST http://localhost:3000/user/update/65958036ac93a938fb59d74a
+POST http://localhost:3000/app/user/update/65958036ac93a938fb59d74a
 Content-Type: application/json
 
 {
@@ -69,6 +69,6 @@ Content-Type: application/json
 ###
 
 # Delete a user by ID
-DELETE http://localhost:3000/user/delete/65958036ac53a935fb59d74a
+DELETE http://localhost:3000/app/user/delete/65958036ac53a935fb59d74a
 
 ###

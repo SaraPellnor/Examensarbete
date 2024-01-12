@@ -7,22 +7,44 @@ export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
-    const data = await fetch("http://localhost:3000/user/");
+    const data = await fetch("http://localhost:3000/app/user/");
     const res = await data.json();
     setUsers(res);
   };
 
   const login = async (user) => {
     try {
-      const data = await fetch("http://localhost:3000/user/login", {
+      const data = await fetch("http://localhost:3000/app/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: 'include',
         body: JSON.stringify(user),
       });
       const res = await data.json();
       console.log(res);
+      // document.cookie = `user=${JSON.stringify(user)}; path=/`;
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const registrate = async (user) => {
+    try {
+      const data = await fetch("http://localhost:3000/app/user/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: 'include',
+        body: JSON.stringify(user),
+      });
+      const res = await data.json();
+      console.log(res);
+      // document.cookie = `user=${JSON.stringify(user)}; path=/`;
+
     } catch (error) {
       console.log(error);
     }
@@ -30,14 +52,7 @@ export const UserProvider = ({ children }) => {
 
   const auth = async () => {
     try {
-      const data = await fetch("http://localhost:3000/user/auth", {
-        method: "POST"
-        // credentials: "include", // Lägg till detta för att inkludera sessionsinformation
-        // headers: {
-        //   "Content-Type": "application/json",
-        //   // Lägg till eventuella andra autentisering headers här
-        // },
-      });
+      const data = await fetch("http://localhost:3000/app/user/auth")
       const res = await data.json();
       console.log(res);
     } catch (error) {
@@ -51,7 +66,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ users, login }}>
+    <UserContext.Provider value={{ users, login, registrate }}>
       {children}
     </UserContext.Provider>
   );

@@ -31,16 +31,16 @@ const orderRoute = express.Router();
 
 // ---- Assign different HTTP methods to respective controller functions
 
-orderRoute.get("/", auth, getOrders);
-orderRoute.post("/create", auth, validation(orderJoiSchema), createOrder);
-orderRoute.get("/:id", getOrderById);
+orderRoute.get("/order/", /*auth,*/ getOrders);
+orderRoute.post("/order/create", /*auth*/ validation(orderJoiSchema), createOrder);
+orderRoute.get("/order/:id", getOrderById);
 orderRoute.post(
-  "/update/:id",
-  isAdmin,
+  "/order/update/:id",
+  /*isAdmin,*/
   validation(orderJoiSchema),
   changeOrder
 );
-orderRoute.delete("/delete/:id", isAdmin, deleteOrder);
+orderRoute.delete("/order/delete/:id", /*isAdmin,*/ deleteOrder);
 
 
 

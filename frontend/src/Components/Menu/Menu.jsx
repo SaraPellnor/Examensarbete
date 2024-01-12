@@ -5,7 +5,7 @@ import "./Menu.css";
 import { useEffect, useState } from "react";
 const Menu = () => {
   const getmenuList = async () => {
-    const data = await fetch("http://localhost:3000/categories/");
+    const data = await fetch("http://localhost:3000/app/categories/");
     const res = await data.json();
     const menuList = await res.filter((item) => item.type === "menu");
     setMenuList(await menuList);
