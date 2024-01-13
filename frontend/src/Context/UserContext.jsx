@@ -51,8 +51,17 @@ export const UserProvider = ({ children }) => {
   };
 
   const auth = async () => {
+    console.log("wiiii");
     try {
-      const data = await fetch("http://localhost:3000/app/user/auth")
+      console.log("wiiii");
+
+      const data = await fetch("http://localhost:3000/app/user/auth", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+      })
       const res = await data.json();
       console.log(res);
     } catch (error) {

@@ -133,7 +133,15 @@ Jag ska lösa mitt problem så här: Jag och Linda ska sitta med samma sak på m
 På måndag ska jag: Påbörja Stripe om jag inte fastnar med session...
 tid: 12h 40min
 
+13 jan 2024
+Idag har jag: Fixat session. Jag tog det från början och fick hjälp av chat GPT. Har antagligen satt olika inställningar på session som gjort att det inte fungerar, tex samesite: "None". När jag ändrade till strict så fungerade det. Sån skön kännsla! :D 
+Det som tog tid var: Ingenting, det fungerade med en gång :D
+Något som jag har problem med är: Ingenting just nu :D
+Jag ska lösa mitt problem så här: ---
+Imorgon ska jag: se dagen innan.
+tid: 30min
+
 V.1
-tid: 51h 45min
+tid: 52h 15min
 ----------------------------------------------------------------
 

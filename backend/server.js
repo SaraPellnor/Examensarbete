@@ -12,7 +12,7 @@ const cors = require("cors")
 
 const express = require("express");
 const session = require("express-session");
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 
 
 
@@ -36,14 +36,16 @@ app.use(
     origin: "http://localhost:5173",
     credentials: true,
   }),
-  cookieParser(),
+  // cookieParser(),
   session({
     secret: process.env.SESSION_CONNECTION_KEY, // Secret key used to sign the session ID cookie
     resave: false, // Do not save the session if it hasn't changed
     saveUninitialized: true, // Save new sessions
     cookie: {
-      maxAge: 3600000,
-      secure: false, httpOnly: true, sameSite: 'None' // Session cookie will expire after 1 hour (in milliseconds)
+      maxAge: 3600000,  // Session cookie will expire after 1 hour (in milliseconds)
+      secure: false, //not https wile developing
+      httpOnly: true, // only fetch, not for axios
+      sameSite: 'strict' // on the sam domen
     },
   })
 );

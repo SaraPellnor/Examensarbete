@@ -29,11 +29,20 @@ nästa vecka när jag ska sitta med React.
 
 V.2
 
-Glad:
+Glad: Nu på lördagen den 13e januari kom jag på att jag skulle skriva retrospective också och precis nu så löste sig auth funktionen 
+genom att jag började om från början med session, och nu fungerade det! :D Sååå glad. 
+I övrigt har veckan varit jätte rolig. Åter igen kommit fram till hur roligt jag tycker att det är med react och frontend 
+och att det är det jag vill hålla på med. Så länge man vet vad "kunden" vill ha så är det väldigt lätt att åstadkomma detta.
+Jag har även byggt sidan med flex och procent vilket har gjort att sidan fungerar på alla plattformat i alla lägen. 
+Det är en väldigt skön kännsla när man förmindskar skärmen och att följer snyggt i förminskningen. 
 
-Frustrerad:
+Frustrerad: Ja det som gjort mig väldigt frustrerad denna veckan är just inloggningen, sätta cookie och skicka auth. 
+Det har ju inte fungerat och det har givit mig gråa hår. Men idag, lördag, så satt jag mig med en ny hjärna och testa igen och då fungerade det. 
 
-Sammanfattning:
+Sammanfattning: Sammanfattningsvis så är jag nöjd med veckan. 
+Tänk att jag fick klart heeela frontenden med funktioner mm på en vecka och jag är väldigt nöjd dessutom. 
+Ska tilläggas att jag haft problem men inte fastnat vilket jag är väldigt stolt över. 
+Jag älskar verkligen det här arbetssättet, dock har jag suttit väldigt mycket mer än jag tänkt men det har varit behövligt. 
 
 V.3
 
