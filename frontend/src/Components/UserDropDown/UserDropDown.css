@@ -1,0 +1,15 @@
+.userDropDown {
+    z-index: 1;
+    position: absolute;
+    top: 30px;
+    right: -84px;
+    min-width: 120px;
+    background-color: white;
+    padding: 15px 30px;
+    box-shadow: 0 1px 10px #c6c5c5;
+    border-radius: 7px;
+}
+
+.userDropDown *:hover {
+color:#c6c5c5 ;
+}

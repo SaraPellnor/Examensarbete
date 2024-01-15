@@ -32,11 +32,11 @@ const userRoute = express.Router();
 // ---- Assign different HTTP methods to respective controller functions
 
 userRoute.get("/user/auth", isUserLoggedIn);
+userRoute.get("/user/logout", logOutUser);
 userRoute.get("/user/", getUsers); 
 userRoute.get("/user/:id", getUserById);
 userRoute.post("/user/create", validation(userJoiSchema), createUser); 
 userRoute.post("/user/login", logInUser); 
-userRoute.post("/user/logout", logOutUser);
 userRoute.post("/user/update/:id", validation(userJoiSchema), changeUser);
 userRoute.delete("/user/delete:id", deleteUser); 
 

@@ -4,7 +4,7 @@ GET http://localhost:3000/app/user
 ###
 
 # Retrieve a specific user by ID
-/appGET http://localhost:3000/user/658ed29d087697c0e6d305d3
+GET http://localhost:3000/app/user/658ed29d087697c0e6d305d3
 
 ###
 
@@ -38,7 +38,7 @@ Content-Type: application/json
 ###
 
 # User logout
-POST http://localhost:3000/app/user/logout
+GET http://localhost:3000/app/user/logout
 
 ###
 

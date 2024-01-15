@@ -9,9 +9,20 @@ export const OrderProvider = ({ children }) => {
   const [cartNum, setCartNum] = useState(0);
 
   const getOrders = async () => {
-    const data = await fetch("http://localhost:3000/app/order");
-    const res = await data.json();
-    setOrders(res);
+    try {
+      const data = await fetch("http://localhost:3000/app/order", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });      const res = await data.json();
+      console.log(res);
+      setOrders(res);
+    } catch (error) {
+      console.log(error);
+    }
+   
   };
 
   const addToCart = (product, quantity) => {
@@ -79,6 +90,7 @@ export const OrderProvider = ({ children }) => {
 
   useEffect(() => {
     conectToLS();
+    getOrders()
   }, []);
 
   return (

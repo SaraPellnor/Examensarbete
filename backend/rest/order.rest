@@ -5,7 +5,7 @@ GET http://localhost:3000/app/order
 
 
 # Retrieve a specific order by ID
-GET http://localhost:3000/app/order/658ecae35e350ccad79aea14
+GET http://localhost:3000/app/order/65a50c1ef18656f2e57d983e
 
 ###
 
@@ -14,7 +14,7 @@ POST http://localhost:3000/app/order/create
 Content-Type: application/json
 
 {
-    "user_ID": "6596750249923593103ce431",
+    "user_ID": "65968c881e59c32e5d747292",
     "product_ID": ["659d3071ff5079eaa9154a63", "659d318c11a3361a36d55d0a", "659d329511a3361a36d55d0c"],
     "shipped": false,
     "total_price": 43,

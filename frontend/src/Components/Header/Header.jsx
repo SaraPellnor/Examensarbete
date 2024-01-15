@@ -13,13 +13,16 @@ import { CiUser } from "react-icons/ci";
 import { Link } from "react-router-dom";
 
 import "./Header.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { OrderContext } from "../../Context/OrderContext";
 import LangBtn from "../LangBtn/LangBtn";
+import { UserContext } from "../../Context/UserContext";
+import UserDropDown from "../UserDropDown/UserDropDown";
 
 const Header = () => {
   const { cartNum } = useContext(OrderContext);
-
+  const { loggedinUser } = useContext(UserContext);
+const [dropDownDisplay, setDropDownDisplay] = useState(false)
   return (
     <header>
       <div className="headerTop">
@@ -32,7 +35,7 @@ const Header = () => {
         <div className="offersDiv">
           Fri frakt i Sverige när du handlar för över 599 SEK
         </div>
-<LangBtn />
+        <LangBtn />
       </div>
       <div className="headerBottom">
         <div className="headerBottomTop">
@@ -46,14 +49,17 @@ const Header = () => {
           </div>
           <div className="userIconsDiv">
             <Link to={"/cart"}>
-              
               <div className="inCartDiv">
                 <div className="cartNum">{cartNum}</div>
                 <BsCart3 />
               </div>
             </Link>
             <CiHeart />
-            <Link to={"/orders"}><CiUser /></Link>
+            <div onClick={() => setDropDownDisplay(dropDownDisplay ? false : true)} className="handleUserIconDiv">
+              <CiUser />
+              {loggedinUser.username && <div className="userIconDot"></div>}
+              {dropDownDisplay && <UserDropDown />}
+            </div>
           </div>
         </div>
         <div className="headerBottomUnder">

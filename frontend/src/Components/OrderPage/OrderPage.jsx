@@ -7,15 +7,15 @@ import "./OrderPage.css";
 import { OrderContext } from "../../Context/OrderContext";
 import { useEffect } from "react";
 import { ProductContext } from "../../Context/ProductContext";
+import { UserContext } from "../../Context/UserContext";
 
 const CartDrawer = () => {
-  const { orders, getOrders, shippedFunction, orderRemove } =
-    useContext(OrderContext);
+  const { orders, shippedFunction, orderRemove } = useContext(OrderContext);
+  const { loggedinUser } = useContext(UserContext);
   const { products } = useContext(ProductContext);
-
-  useEffect(() => {
-    getOrders();
-  }, []);
+  console.log(orders);
+  console.log(loggedinUser);
+  useEffect(() => {}, []);
 
   return (
     <div className="orderPage">
@@ -26,7 +26,10 @@ const CartDrawer = () => {
               <div className="order">
                 <div className="orderInfo">
                   <p>Orderdatum: {order.date}</p>
-                  <p style={{color: order.shipped ? "green" : "red"}}onClick={() => shippedFunction(order)}>
+                  <p
+                    style={{ color: order.shipped ? "green" : "red" }}
+                    onClick={() => shippedFunction(order)}
+                  >
                     {order.shipped ? "Skickad" : "Ej skickad"}
                   </p>
                 </div>
@@ -48,16 +51,16 @@ const CartDrawer = () => {
                     </div>
                   ) : null;
                 })}
-                 <div className="orderInfo">
-                <p>{order.total_price},00 SEK</p>
-                <button className="orderRemove"  onClick={() => orderRemove(order._id)}> 
-                  <FaRegTrashCan
-                    style={{ cursor: "pointer" }}
-                  /> Arkivera
-                </button>
+                <div className="orderInfo">
+                  <p>{order.total_price},00 SEK</p>
+                  <button
+                    className="orderRemove"
+                    onClick={() => orderRemove(order._id)}
+                  >
+                    <FaRegTrashCan style={{ cursor: "pointer" }} /> Arkivera
+                  </button>
+                </div>
               </div>
-              </div>
-             
             </div>
           ))}
 
@@ -69,11 +72,11 @@ const CartDrawer = () => {
         </div>
       )}
       <div className="orderPageBottom">
-      <Link to={"/"}>
-        <button className="returnBtn">
-          <MdArrowBackIos /> Fortsätt handla
-        </button>
-      </Link>
+        <Link to={"/"}>
+          <button className="returnBtn">
+            <MdArrowBackIos /> Fortsätt handla
+          </button>
+        </Link>
       </div>
     </div>
   );

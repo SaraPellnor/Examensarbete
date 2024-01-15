@@ -10,6 +10,7 @@ header {
 }
 
 .iconDiv {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,6 +21,10 @@ header {
   width: 30px;
   padding: 0 7px;
   border-right: black solid 1px;
+}
+
+.iconDiv :last-child {
+  border: none;
 }
 
 .offersDiv {
@@ -89,6 +94,24 @@ header {
   background-color: #7f9b9d;
   color: white;
   font-size: 10px;
+}
+
+.handleUserIconDiv {
+position: relative;
+display: flex;
+align-items: center;
+height: 16px;
+border: none;
+}
+
+.userIconDot {
+  position: absolute;
+  top: -3px;
+  right: 4px;
+  background-color: #7f9b9d;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
 }
 
 .headerBottomUnder {

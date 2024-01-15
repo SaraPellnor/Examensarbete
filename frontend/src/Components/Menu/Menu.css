@@ -27,6 +27,10 @@
   cursor: pointer;
 }
 
+.menu ul :last-child {
+  border: none;
+}
+
 .menuDrawer {
   /* default value else flex */
   display: none; 

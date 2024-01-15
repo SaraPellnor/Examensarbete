@@ -35,16 +35,12 @@ const getUserById = async (req, res, err) => {
 
 const isUserLoggedIn = (req, res, err) => {
   try {
-    if(req.session && req.session.user){    const loggedInUser = req.session.user;
-      console.log(loggedInUser)
-      res.status(200).json(loggedInUser)
-    } else {
-        res.status(200).json("User is not logged in")
-      }
+      const loggedInUser = req.session.user;
+console.log(req.session);
 
-    // !loggedInUser
-    //   ? res.status(200).json("User is not logged in")
-    //   : res.status(200).json(loggedInUser);
+    !loggedInUser
+      ? res.status(200).json("User is not logged in")
+      : res.status(200).json(loggedInUser);
   } catch (error) {
     res.status(400).json(err);
   }

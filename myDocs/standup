@@ -141,7 +141,15 @@ Jag ska lösa mitt problem så här: ---
 Imorgon ska jag: se dagen innan.
 tid: 30min
 
-V.1
+V.2
 tid: 52h 15min
 ----------------------------------------------------------------
 
+15 jan 2024
+Idag har jag: Felsökt varför jag inte kan hämta orders när användaren är inloggad.
+Det som tog tid var: Att felsöka.
+Något som jag har problem med är: Kom precis fram till problemmet och det var samma som innan, mn måste skicka med 
+credentials: "include" i GET:en för att den ska hämta session. Då fungerade det. Så glad 
+Jag ska lösa mitt problem så här: Nu är det löst wiiii
+Imorgon ska jag: Börja med STRIPE!!!! :D
+tid:  7h
