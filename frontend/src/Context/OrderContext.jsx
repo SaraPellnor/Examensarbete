@@ -1,5 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import { UserContext } from "./UserContext";
+import { useNavigate } from "react-router-dom";
 
 export const OrderContext = createContext();
 
@@ -7,6 +10,11 @@ export const OrderProvider = ({ children }) => {
   const [orders, setOrders] = useState([]);
   const [cart, setCart] = useState([]);
   const [cartNum, setCartNum] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [errorMessage, setErrorMessage] = useState();
+
+  const { loggedinUser } = useContext(UserContext);
+  const navigateTo = useNavigate();
 
   const getOrders = async () => {
     try {
@@ -16,14 +24,144 @@ export const OrderProvider = ({ children }) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-      });      const res = await data.json();
-      console.log(res);
-      setOrders(res);
+      });
+      // Handle errors
+      if (data.ok) {
+        const res = await data.json();
+
+        if (res) {
+          setOrders(res);
+        } else {
+          setErrorMessage(res);
+          navigateTo("/error");
+        }
+      } else {
+        setErrorMessage(data.status);
+
+        navigateTo("/error");
+      }
+    } catch (error) {
+      setErrorMessage(error.message);
+      navigateTo("/error");
+    }
+  };
+
+  // ----- Fors the window to stripe checkout page were customer can handle the payments
+
+  const getCheckout = async () => {
+    try {
+      // New listItem with data that stripe session needs
+      const lineItems = cart.map((product) => {
+        return {
+          price_data: {
+            currency: "sek",
+            product_data: { name: product.product_title },
+            unit_amount: product.product_price * 100,
+          },
+          quantity: product.quantity,
+        };
+      });
+      // All the data to POST to backend
+      const dataToSend = {
+        lineItems: lineItems,
+        userEmail: loggedinUser.email,
+      };
+
+      const data = await fetch("http://localhost:3000/app/stripe/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(dataToSend),
+      });
+
+      if (!data.ok) {
+        setErrorMessage(data.status);
+        navigateTo("/error");
+      }
+      const res = await data.json();
+      window.location = res.url;
     } catch (error) {
       console.log(error);
+      setErrorMessage(error.message);
+      navigateTo("/error");
     }
-   
   };
+
+  // returns date of today
+  const date = () => {
+    const today = new Date();
+
+    const options = {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+    };
+
+    const formattedDate = today.toLocaleString("sv-SE", options);
+
+    return formattedDate;
+  };
+
+  const createOrder = async () => {
+    if (
+      cart.length === 0 ||
+      loggedinUser === undefined ||
+      loggedinUser === "User is not logged in"
+    ) {
+      setErrorMessage("Något gick fel vid skapandet av order...");
+      navigateTo("/error");
+    }
+
+    try {
+      const orderList = cart.map((product) => {
+        return product._id;
+      });
+
+      const orderData = {
+        user_ID: loggedinUser.user_id,
+        product_ID: orderList,
+        shipped: false,
+        total_price: totalPrice,
+        date: date(),
+      };
+
+      if (!orderList || !orderData) {
+        setErrorMessage("Något gick fel vid skapandet av order...");
+        navigateTo("/error");
+      }
+
+      const data = await fetch("http://localhost:3000/app/order/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(orderData),
+      });
+
+      // Handle errors
+
+      if (!data.ok) {
+        setErrorMessage(data.status);
+        navigateTo("/error");
+      }
+
+      localStorage.clear("cart");
+      setCart([]);
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(error.message);
+      navigateTo("/error");
+    }
+  };
+
+  // ----- Add products to cart and Local storage
 
   const addToCart = (product, quantity) => {
     const existingProductIndex = cart.findIndex(
@@ -44,24 +182,42 @@ export const OrderProvider = ({ children }) => {
   const shippedFunction = async (order) => {
     try {
       const { _id, ...orderWithoutId } = order;
+      if (!_id || !orderWithoutId) {
+        setErrorMessage(
+          "Något gick fel när du försökte ändra på statusen på ordern"
+        );
+        navigateTo("/error");
+      }
+      const data = await fetch(
+        `http://localhost:3000/app/order/update/${_id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({ ...orderWithoutId, shipped: !order.shipped }),
+        }
+      );
+      if (!data.ok) {
+        setErrorMessage(data.status);
+        navigateTo("/error");
+      }
 
-      await fetch(`http://localhost:3000/app/order/update/${_id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({ ...orderWithoutId, shipped: !order.shipped }),
-      });
       getOrders();
     } catch (error) {
       console.log(error);
+      setErrorMessage(error.message);
+      navigateTo("/error");
     }
   };
 
   //DOSENT WORK--------------------------------------------
   const orderRemove = async (id) => {
-    console.log(id);
+    if (!id) {
+      setErrorMessage("Något gick fel när du försökte ta bort en order");
+      navigateTo("/error");
+    }
     try {
       const data = await fetch(`http://localhost:3000/app/order/delete/${id}`, {
         method: "DELETE",
@@ -71,11 +227,26 @@ export const OrderProvider = ({ children }) => {
         credentials: "include",
       });
       const res = await data.json();
-      console.log(res, " order is removed!");
+      if (!res || res === "you are not an admin, sorry") {
+        setErrorMessage(res);
+        navigateTo("/error");
+      }
+
       getOrders();
     } catch (error) {
-      console.log("Error in orderRemove: ", error);
+      console.log(error);
+      setErrorMessage(error.message);
+      navigateTo("/error");
     }
+  };
+
+  const totalPriceFunction = () => {
+    // count together the value for each item in to acc
+    const sum = cart.reduce((acc, item) => {
+      return acc + item.product_price * item.quantity;
+    }, 0);
+
+    sum && setTotalPrice(sum);
   };
 
   const conectToLS = () => {
@@ -89,9 +260,9 @@ export const OrderProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    totalPriceFunction();
     conectToLS();
-    getOrders()
-  }, []);
+  }, [loggedinUser]);
 
   return (
     <OrderContext.Provider
@@ -106,6 +277,11 @@ export const OrderProvider = ({ children }) => {
         setOrders,
         shippedFunction,
         orderRemove,
+        getCheckout,
+        createOrder,
+        totalPrice,
+        totalPriceFunction,
+        errorMessage,
       }}
     >
       {children}

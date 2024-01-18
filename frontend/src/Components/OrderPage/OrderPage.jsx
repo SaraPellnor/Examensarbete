@@ -1,21 +1,22 @@
-import { useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { MdArrowBackIos } from "react-icons/md";
 
 import "./OrderPage.css";
 import { OrderContext } from "../../Context/OrderContext";
-import { useEffect } from "react";
 import { ProductContext } from "../../Context/ProductContext";
 import { UserContext } from "../../Context/UserContext";
 
-const CartDrawer = () => {
-  const { orders, shippedFunction, orderRemove } = useContext(OrderContext);
-  const { loggedinUser } = useContext(UserContext);
+const OrderPage = () => {
+  const { orders, shippedFunction, orderRemove, getOrders } =
+    useContext(OrderContext);
   const { products } = useContext(ProductContext);
-  console.log(orders);
-  console.log(loggedinUser);
-  useEffect(() => {}, []);
+  const { loggedinUser } = useContext(UserContext);
+  useEffect(() => {
+    getOrders();
+  }, []);
 
   return (
     <div className="orderPage">
@@ -25,10 +26,15 @@ const CartDrawer = () => {
             <div key={order._id}>
               <div className="order">
                 <div className="orderInfo">
+                  {loggedinUser.ia_admin && (
+                    <p>Customer: {loggedinUser.username}</p>
+                  )}
                   <p>Orderdatum: {order.date}</p>
                   <p
                     style={{ color: order.shipped ? "green" : "red" }}
-                    onClick={() => shippedFunction(order)}
+                    onClick={() =>
+                      loggedinUser.is_admin && shippedFunction(order)
+                    }
                   >
                     {order.shipped ? "Skickad" : "Ej skickad"}
                   </p>
@@ -53,21 +59,23 @@ const CartDrawer = () => {
                 })}
                 <div className="orderInfo">
                   <p>{order.total_price},00 SEK</p>
-                  <button
-                    className="orderRemove"
-                    onClick={() => orderRemove(order._id)}
-                  >
-                    <FaRegTrashCan style={{ cursor: "pointer" }} /> Arkivera
-                  </button>
+                  {loggedinUser.is_admin && (
+                    <button
+                      className="orderRemove"
+                      onClick={() => orderRemove(order._id)}
+                    >
+                      <FaRegTrashCan style={{ cursor: "pointer" }} /> Arkivera
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
           ))}
 
-          <div className="cartDrawerDivBottom"></div>
+          <div className="OrderPageDivBottom"></div>
         </div>
       ) : (
-        <div className="cartEmpty">
+        <div className="OrderPageEmpty">
           <p>Du har inga odrar</p>
         </div>
       )}
@@ -82,4 +90,4 @@ const CartDrawer = () => {
   );
 };
 
-export default CartDrawer;
+export default OrderPage;

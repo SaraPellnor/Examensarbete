@@ -6,7 +6,7 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
-  const [loggedinUser, setLoggedinUser] = useState({});
+  const [loggedinUser, setLoggedinUser] = useState();
   const navigateTo = useNavigate()
 
 
@@ -27,6 +27,8 @@ export const UserProvider = ({ children }) => {
         body: JSON.stringify(user),
       });
       const res = await data.json();
+      console.log(res);
+
       setLoggedinUser(res);
       navigateTo("/")
     } catch (error) {
@@ -71,10 +73,15 @@ export const UserProvider = ({ children }) => {
 
   const logOutUser = async () => {
     try {
-      const data = await fetch("http://localhost:3000/app/user/logout");
-      const res = await data.json();
+      const data = await fetch("http://localhost:3000/app/user/logout", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });      const res = await data.json();
       !res && console.log("Något gick fel vid utloggningen");
-      setLoggedinUser({});
+      setLoggedinUser();
       navigateTo("/")
     } catch (error) {
       console.log(error);

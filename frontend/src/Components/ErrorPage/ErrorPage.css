@@ -1,0 +1,24 @@
+.errorPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 50px;
+    background-color: white;
+}
+
+.errorPage img {
+    width: 70%;
+    max-width: 518px;
+    min-width: 225px;
+}
+
+.errorMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px black solid;
+    width: 80%;
+    padding: 20px;
+}

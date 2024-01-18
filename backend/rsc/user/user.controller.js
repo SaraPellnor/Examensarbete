@@ -36,7 +36,6 @@ const getUserById = async (req, res, err) => {
 const isUserLoggedIn = (req, res, err) => {
   try {
       const loggedInUser = req.session.user;
-console.log(req.session);
 
     !loggedInUser
       ? res.status(200).json("User is not logged in")
@@ -53,7 +52,7 @@ console.log(req.session);
 const logInUser = async (req, res, err) => {
   try {
     const user = await UserModel.findOne({
-      username: req.body.username,
+      email: req.body.email,
     });
     !user
       ? res.status(400).json("Incorrect username")
@@ -71,6 +70,7 @@ const logInUser = async (req, res, err) => {
                   is_admin: user.isAdmin,
                   user_id: user._id.toString(),
                   username: user.username,
+                  email: user.email,
                 };
                 res.status(200).json(req.session.user);
               }

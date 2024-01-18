@@ -153,3 +153,31 @@ credentials: "include" i GET:en för att den ska hämta session. Då fungerade d
 Jag ska lösa mitt problem så här: Nu är det löst wiiii
 Imorgon ska jag: Börja med STRIPE!!!! :D
 tid:  7h
+
+16 jan 2024
+Idag har jag: Börjat med Stripe. Jag vill använda mig av endast checkout utan att ha users eller products i stripe så har försökt hitta information om det på nätet och youtube men testar en sak som chat gpt kom med. Dock hann jag inte få det att fungera utan felmeddelanden så har inte pushat till github idag.
+Det som tog tid var: Seg idag, lite tung i huvudet så det mesta tog tid men det som tog mest tid idag var att bara sätta upp basen. Har skapat en egen route och controllers sida i backend för stripe.
+Något som jag har problem med är: Det är att få ivägskickat en create session till stripe för att list_items blir fel tror jag så ska kika på det imorgon. Vet inte heller om det kommer fungera utan pice_id som skapas i stripe men får göra ett försök iaf.  
+Jag ska lösa mitt problem så här: Genom att testa mig fram, och får jag det inte att fungera så får jag tänka om och kanske skapa produkterna på både stripe och mongodb.
+Imorgon ska jag: Lösa en stripe checkout session. :D
+tid:  7h 40min
+
+17 jan 2024
+Idag har jag: Löst Stripe! Det var mycket enklare än vad jag trode. Jag skapar en stripe checkout session och skapar bara en order med customer email.
+Har även löst så att man hamnar på en specifik sida vid order success och att man sedan kallar på createOrder() som skapar ordern i MongoDB också innan den nollställs.
+Det som tog tid var: Att komm på vad exakt det var jag skulle skicka in till stripe och hur jag skulle uppdatera react componenterna så att staten cart och loggedinUser sätts igen, 
+så att jag kunde använda dom för att skapa en order i MongoDB.
+Något som jag har problem med är: Inget jag kan komma på för tillfället. 
+Jag ska lösa mitt problem så här: -
+Imorgon ska jag: Finslipa createOrder() och städa och felhantera.
+tid:  8h 30min
+
+18 jan 2024
+Idag har jag: Löst buggar i orderContext och hanterar error med en error-sida. Har även börjat titta lite på dom andra contexten för att lösa errors.
+Det som tog tid var: När man felhanterar och det blir fel, trots att man tror att det borde bli rätt, och man inte riktigt förstår vad som felar. 
+Dessutom när man måste gå igenom en stripe checkout för att felsöka varje gång så tar det extra tid.
+Något som jag har problem med är: Det är lite jobbigt med felhanteringen och jag är bara lite osäker på om det är rätt väg att gå, 
+men jag gillar att man hamnar på en sida som beskriver att det gått fel och varför.
+Jag ska lösa mitt problem så här: Jag ska läsa mer om det, hur man kan göra och borde göra...
+Imorgon ska jag: Fortsätta med felhantering och förhoppningsvis börja kommentera och städa koden.
+tid:  9h 30min

@@ -13,12 +13,10 @@ const getOrders = async (req, res, err) => {
 
   let orders;
   try {
-    console.log("in get orders", req.session);
     // Check if the user is an admin
     req.session.user.is_admin
       ? (orders = await OrderModel.find()) 
       : (orders = await OrderModel.find({ user_ID: req.session.user.user_id }));
-console.log(orders);
     // Check if orders were found
     !orders
       ? res.status(400).json("Finns inga ordrar")
