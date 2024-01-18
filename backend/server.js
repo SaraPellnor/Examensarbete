@@ -27,6 +27,7 @@ const { orderRoute } = require("./rsc/order/order.router");
 const { productRoute } = require("./rsc/products/products.router");
 const { userRoute } = require("./rsc/user/user.router");
 const { categoryRoute } = require("./rsc/categories/categories.router");
+const { stripeRoute } = require("./rsc/stripe/stripe.router");
 
 
 // ---- Configure cors and session middleware
@@ -68,7 +69,7 @@ app.use("/app", userRoute);
 app.use("/app", orderRoute);
 app.use("/app", productRoute);
 app.use("/app", categoryRoute);
-
+app.use("/app", stripeRoute);
 
 
 // ---- Connect to MongoDB using Mongoose

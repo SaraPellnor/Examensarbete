@@ -9,15 +9,15 @@ import { OrderProvider } from "./Context/OrderContext";
 
 function App() {
   return (
-    <OrderProvider>
-      <UserProvider>
+    <UserProvider>
+      <OrderProvider>
         <ProductProvider>
           <Header />
           <Main />
           <Footer />
         </ProductProvider>
-      </UserProvider>
-    </OrderProvider>
+      </OrderProvider>
+    </UserProvider>
   );
 }
 
