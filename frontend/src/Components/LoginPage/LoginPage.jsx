@@ -10,7 +10,7 @@ const LoginFormPage = () => {
 
   const [password, setPassword] = useState("");
   const loginData = {
-    username: name,
+    email: email,
     password: password,
   };
 
@@ -47,11 +47,11 @@ const LoginFormPage = () => {
         </div>
         {loginForm ? (
           <div className="loginForm">
-            <label>Namn</label>
+            <label>E-post</label>
             <input
-              placeholder="Namn"
-              type="text"
-              onChange={(e) => setName(e.target.value)}
+              placeholder="E-post"
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label htmlFor="">Lösenord</label>
             <input
@@ -65,17 +65,28 @@ const LoginFormPage = () => {
         ) : (
           <div className="registrateForm">
             <label htmlFor="email">E-post</label>
-            <input placeholder="E-post" type="email"               onChange={(e) => setEmail(e.target.value)}
- />
+            <input
+              placeholder="E-post"
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <label htmlFor="name">Namn</label>
-            <input placeholder="e.g. John Doe" type="text"               onChange={(e) => setName(e.target.value)}
- />
+            <input
+              placeholder="e.g. John Doe"
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+            />
             <label htmlFor="">Lösenord</label>
-            <input placeholder="Lösenord" type="password"               onChange={(e) => setPassword(e.target.value)}
-/>
+            <input
+              placeholder="Lösenord"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <label htmlFor="">Bekräfta Lösenord</label>
             <input placeholder="Lösenord" type="password" />
-            <button type="submit" onClick={() => registrate(registrationData)}>Registrera dig</button>
+            <button type="submit" onClick={() => registrate(registrationData)}>
+              Registrera dig
+            </button>
           </div>
         )}
       </div>

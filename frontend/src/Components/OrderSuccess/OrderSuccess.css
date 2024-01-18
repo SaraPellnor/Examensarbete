@@ -1,0 +1,8 @@
+.orderSuccess {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 50px;
+    background-color: white;
+}
