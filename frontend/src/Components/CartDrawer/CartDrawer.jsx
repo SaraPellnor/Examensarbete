@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
@@ -8,17 +8,8 @@ import { OrderContext } from "../../Context/OrderContext";
 import { useEffect } from "react";
 
 const CartDrawer = () => {
-  const { cart, setCart, setCartNum } = useContext(OrderContext);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const { cart, setCart, setCartNum, getCheckout, totalPriceFunction, totalPrice } = useContext(OrderContext);
 
-  const totalPriceFunction = () => {
-    // count together the value for each item in to acc
-    const sum = cart.reduce((acc, item) => {
-      return acc + item.product_price * item.quantity;
-    }, 0);
-
-    setTotalPrice(sum);
-  };
 
   const removeAll = () => {
     localStorage.removeItem("cart");
@@ -32,7 +23,6 @@ const CartDrawer = () => {
     const updatedCart = cart
       .map((item) => {
         if (item._id === productId) {
-          // uppdates item.quantity to (item.quantity - 1) if its not 0
           const updatedQuantity = Math.max(item.quantity - 1, 0);
           return { ...item, quantity: updatedQuantity };
         }
@@ -48,7 +38,7 @@ const CartDrawer = () => {
 
   useEffect(() => {
     totalPriceFunction();
-  }, []);
+  }, [setCart]);
 
   return (
     <div className="cartDrawer">
@@ -95,7 +85,7 @@ const CartDrawer = () => {
                 <MdArrowBackIos /> Fortsätt
               </button>
             </Link>
-            <button className="bayBtn">
+            <button className="bayBtn" onClick={() => getCheckout()}>
               Till kassan <MdArrowForwardIos />
             </button>
           </div>

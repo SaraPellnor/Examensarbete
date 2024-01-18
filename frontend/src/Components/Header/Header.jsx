@@ -22,7 +22,8 @@ import UserDropDown from "../UserDropDown/UserDropDown";
 const Header = () => {
   const { cartNum } = useContext(OrderContext);
   const { loggedinUser } = useContext(UserContext);
-const [dropDownDisplay, setDropDownDisplay] = useState(false)
+  const [dropDownDisplay, setDropDownDisplay] = useState(false);
+
   return (
     <header>
       <div className="headerTop">
@@ -55,9 +56,16 @@ const [dropDownDisplay, setDropDownDisplay] = useState(false)
               </div>
             </Link>
             <CiHeart />
-            <div onClick={() => setDropDownDisplay(dropDownDisplay ? false : true)} className="handleUserIconDiv">
+            <div
+              onClick={() => setDropDownDisplay(dropDownDisplay ? false : true)}
+              className="handleUserIconDiv"
+            >
               <CiUser />
-              {loggedinUser.username && <div className="userIconDot"></div>}
+              {!loggedinUser ||
+                (loggedinUser != "User is not logged in" && (
+                  <div className="userIconDot"></div>
+                ))}
+
               {dropDownDisplay && <UserDropDown />}
             </div>
           </div>

@@ -38,10 +38,8 @@ const isAdmin = (req, res, next) => {
 // ---- Check authentication based on user session
 
 const auth = (req, res, next, err) => {
-  console.log("in auth", req.session);
 
   try {
-    // const loggedInUser = req.session.user;
     !req.session.user 
       ? res.status(400).json(err)
       : next()

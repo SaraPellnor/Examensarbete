@@ -15,9 +15,7 @@ const ProductCard = () => {
     products &&
     products.map((item) => (
       <div key={item._id} className="productCard">
-        {/* <Link to={`product/${item._id}`}> */}
           <img src={`../../../src/assets/${item.product_image}`} alt="shampo" />
-        {/* </Link> */}
         <Link to={`product/${item._id}`}>
           <div>
             <p className="title">{item.product_title}</p>
