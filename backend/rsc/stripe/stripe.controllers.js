@@ -6,7 +6,6 @@ const CLIENT_URL = process.env.CLIENT_URL
 
 const checkout = async (req, res, err) => {
     try {
-      console.log(req.body);
         const session = await stripe.checkout.sessions.create({
           line_items: req.body.lineItems,
           mode: "payment",

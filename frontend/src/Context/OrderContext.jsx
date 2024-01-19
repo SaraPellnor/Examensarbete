@@ -11,9 +11,8 @@ export const OrderProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartNum, setCartNum] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [errorMessage, setErrorMessage] = useState();
 
-  const { loggedinUser } = useContext(UserContext);
+  const { loggedinUser, setErrorMessage } = useContext(UserContext);
   const navigateTo = useNavigate();
 
   const getOrders = async () => {
@@ -154,6 +153,7 @@ export const OrderProvider = ({ children }) => {
 
       localStorage.clear("cart");
       setCart([]);
+      setCartNum(0)
     } catch (error) {
       console.log(error);
       setErrorMessage(error.message);
@@ -281,7 +281,7 @@ export const OrderProvider = ({ children }) => {
         createOrder,
         totalPrice,
         totalPriceFunction,
-        errorMessage,
+        
       }}
     >
       {children}

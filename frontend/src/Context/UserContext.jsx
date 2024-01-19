@@ -1,19 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { createContext, useState, useEffect } from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [loggedinUser, setLoggedinUser] = useState();
-  const navigateTo = useNavigate()
+  const [errorMessage, setErrorMessage] = useState();
 
+  const navigateTo = useNavigate();
 
   const getUsers = async () => {
-    const data = await fetch("http://localhost:3000/app/user/");
-    const res = await data.json();
-    setUsers(res);
+    try {
+      const data = await fetch("http://localhost:3000/app/user/");
+      const res = await data.json();
+      setUsers(res);
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(error.message);
+      navigateTo("/error");
+    }
   };
 
   const login = async (user) => {
@@ -27,12 +35,13 @@ export const UserProvider = ({ children }) => {
         body: JSON.stringify(user),
       });
       const res = await data.json();
-      console.log(res);
 
       setLoggedinUser(res);
-      navigateTo("/")
+      navigateTo("/");
     } catch (error) {
       console.log(error);
+      setErrorMessage(error.message);
+      navigateTo("/error");
     }
   };
 
@@ -48,9 +57,11 @@ export const UserProvider = ({ children }) => {
       });
       const res = await data.json();
       setLoggedinUser(res);
-      navigateTo("/")
+      navigateTo("/");
     } catch (error) {
       console.log(error);
+      setErrorMessage(error.message);
+      navigateTo("/error");
     }
   };
 
@@ -68,23 +79,26 @@ export const UserProvider = ({ children }) => {
       setLoggedinUser(res);
     } catch (error) {
       console.log(error);
+      setErrorMessage(error.message);
+      navigateTo("/error");
     }
   };
 
   const logOutUser = async () => {
     try {
-      const data = await fetch("http://localhost:3000/app/user/logout", {
+      await fetch("http://localhost:3000/app/user/logout", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
         credentials: "include",
-      });      const res = await data.json();
-      !res && console.log("Något gick fel vid utloggningen");
+      });
       setLoggedinUser();
-      navigateTo("/")
+      navigateTo("/");
     } catch (error) {
       console.log(error);
+      setErrorMessage(error.message);
+      navigateTo("/error");
     }
   };
 
@@ -95,7 +109,14 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ users, login, registrate, loggedinUser, logOutUser }}
+      value={{
+        users,
+        login,
+        registrate,
+        loggedinUser,
+        logOutUser,
+        errorMessage,
+      }}
     >
       {children}
     </UserContext.Provider>

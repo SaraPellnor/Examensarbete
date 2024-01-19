@@ -34,7 +34,7 @@ const Header = () => {
           <FaInstagram />
         </div>
         <div className="offersDiv">
-          Fri frakt i Sverige när du handlar för över 599 SEK
+          Få 10% med rabattkoden SOMMAR2024 om du handlar för över 100 kr
         </div>
         <LangBtn />
       </div>

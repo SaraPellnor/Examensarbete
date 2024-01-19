@@ -6,17 +6,17 @@ const UserDropDown = () => {
   const { loggedinUser, logOutUser } = useContext(UserContext);
   return (
     <div className="userDropDown">
-      {loggedinUser.username && (
+      {loggedinUser && (
         <p>
           {loggedinUser.is_admin ? "Admin" : loggedinUser.username}
         </p>
       )}
-      {loggedinUser.username && (
+      {loggedinUser && (
         <Link to={"/orders"}>
           <p>Orders</p>
         </Link>
       )}
-      {loggedinUser.username ? (
+      {loggedinUser ? (
         <p onClick={ () => logOutUser()}>Logga ut</p>
       ) : (
         <Link to={"/login"}>
