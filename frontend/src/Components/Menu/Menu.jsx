@@ -20,8 +20,6 @@ const Menu = () => {
   const [activeCategory, setActiveCategory] = useState("");
 
   const openDrawer = (item) => {
-    console.log(activeCategory);
-    console.log(item);
     setActiveUC(item.category_description);
     setActiveCategory(item);
     if (drawerDisplay == "none" && activeCategory == "") {

@@ -83,6 +83,13 @@
 
   }
 
+  .OrderPageEmpty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+  }
+
   .orderPageBottom {
     padding: 20px;
   }

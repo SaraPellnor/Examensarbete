@@ -38,7 +38,8 @@
 .productInCart img {
   border: 1px solid #ededed;
   padding: 7px;
-  width: 15%;
+  width: 10%;
+  max-width: 85px;
   background-color: white;
 }
 
@@ -66,7 +67,6 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border: 1px solid #ededed;
   padding: 25px;
 }
 
@@ -83,23 +83,18 @@
   padding: 35px;
 }
 
-.cartDrawerDivBottom button, .cartEmpty button {
+.bayBtn {
   display: flex;
   align-items: center;
   padding: 10px;
   border: none;
   color: white;
-}
-
-.returnBtn {
-  background-color: #bfcdce;
-}
-
-.bayBtn {
   background-color: #7f9b9d;
 }
 
 .cartEmpty {
+  display: flex;
   padding: 60px;
+  gap: 50px;
   text-align: center;
 }

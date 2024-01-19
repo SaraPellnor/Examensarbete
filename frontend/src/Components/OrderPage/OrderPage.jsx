@@ -1,13 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { FaRegTrashCan } from "react-icons/fa6";
-import { MdArrowBackIos } from "react-icons/md";
 
 import "./OrderPage.css";
 import { OrderContext } from "../../Context/OrderContext";
 import { ProductContext } from "../../Context/ProductContext";
 import { UserContext } from "../../Context/UserContext";
+import ReturnBtn from "../ReturnBtn/ReturnBtn";
 
 const OrderPage = () => {
   const { orders, shippedFunction, orderRemove, getOrders } =
@@ -77,14 +76,11 @@ const OrderPage = () => {
       ) : (
         <div className="OrderPageEmpty">
           <p>Du har inga odrar</p>
+
         </div>
       )}
       <div className="orderPageBottom">
-        <Link to={"/"}>
-          <button className="returnBtn">
-            <MdArrowBackIos /> Fortsätt handla
-          </button>
-        </Link>
+       < ReturnBtn />
       </div>
     </div>
   );

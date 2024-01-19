@@ -1,11 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { FaRegTrashCan } from "react-icons/fa6";
-import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import { MdArrowForwardIos } from "react-icons/md";
 
 import "./CartDrawer.css";
 import { OrderContext } from "../../Context/OrderContext";
 import { useEffect } from "react";
+import ReturnBtn from "../ReturnBtn/ReturnBtn";
 
 const CartDrawer = () => {
   const { cart, setCart, setCartNum, getCheckout, totalPriceFunction, totalPrice } = useContext(OrderContext);
@@ -15,8 +16,6 @@ const CartDrawer = () => {
     localStorage.removeItem("cart");
     setCartNum(0);
     setCart([]);
-
-    console.log("removed all");
   };
 
   const removeOne = (productId) => {
@@ -74,17 +73,12 @@ const CartDrawer = () => {
           </div>
           <div className="totalPriceDiv">
             <div className="totalPrice">
-              <p>Totalt:</p>
-              <p>{totalPrice},00 SEK</p>
+              <p>Totalt: {totalPrice},00 SEK</p>
             </div>
-            <p>Lägg till rabattkod</p>
           </div>
           <div className="cartDrawerDivBottom">
-            <Link to={"/"}>
-              <button className="returnBtn">
-                <MdArrowBackIos /> Fortsätt
-              </button>
-            </Link>
+          <ReturnBtn />
+
             <button className="bayBtn" onClick={() => getCheckout()}>
               Till kassan <MdArrowForwardIos />
             </button>
@@ -93,11 +87,7 @@ const CartDrawer = () => {
       ) : (
         <div className="cartEmpty">
           <p>Din kundkorg är tom</p>
-          <Link to={"/"}>
-            <button className="returnBtn">
-              <MdArrowBackIos /> Fortsätt handla
-            </button>{" "}
-          </Link>
+         <ReturnBtn />
         </div>
       )}
     </div>
