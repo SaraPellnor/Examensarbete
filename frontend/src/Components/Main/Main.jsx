@@ -3,11 +3,16 @@ import ProductPage from "../ProductPage/ProductPage"
 import OrderPage from "../OrderPage/OrderPage"
 import DetailPage from "../DetailPage/DetailPage"
 import LoginPage from "../LoginPage/LoginPage"
-import "./Main.css"
 import CartDrawer from "../CartDrawer/CartDrawer"
 import OrderSuccess from "../OrderSuccess/OrderSuccess"
 import ErrorPage from "../ErrorPage/ErrorPage"
+import "./Main.css"
+
 const Main = () => {
+
+
+  // ----- Configuring routes for different pages
+
   return (
     <div className="main">
       <Routes>
@@ -18,9 +23,6 @@ const Main = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/order-succsess" element={<OrderSuccess />} />
         <Route path="/error" element={<ErrorPage />} />
-
-
-
       </Routes>
     </div>
   )

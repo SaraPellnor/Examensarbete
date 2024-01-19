@@ -1,18 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
-
-import "./OrderPage.css";
 import { OrderContext } from "../../Context/OrderContext";
 import { ProductContext } from "../../Context/ProductContext";
 import { UserContext } from "../../Context/UserContext";
 import ReturnBtn from "../ReturnBtn/ReturnBtn";
 
+import "./OrderPage.css";
+
+
 const OrderPage = () => {
-  const { orders, shippedFunction, orderRemove, getOrders } =
-    useContext(OrderContext);
+
+
+  // ----- Destructuring necessary functions and data from context
+
+  const { orders, shippedFunction, orderRemove, getOrders } = useContext(OrderContext);
   const { products } = useContext(ProductContext);
   const { loggedinUser } = useContext(UserContext);
+
+
+  // ----- Fetching user orders on component mount
+
   useEffect(() => {
     getOrders();
   }, []);
@@ -21,23 +29,37 @@ const OrderPage = () => {
     <div className="orderPage">
       {orders.length > 0 ? (
         <div className="orderPageDiv">
+
+
+          {/* Mapping through user orders */}
+
           {orders.map((order) => (
             <div key={order._id}>
               <div className="order">
                 <div className="orderInfo">
+
+
+                  {/* Displaying customer information for admin */}
+
                   {loggedinUser.ia_admin && (
                     <p>Customer: {loggedinUser.username}</p>
                   )}
                   <p>Orderdatum: {order.date}</p>
+
+
+                  {/* Displaying order status and enabling shipment update for admin */}
+
                   <p
                     style={{ color: order.shipped ? "green" : "red" }}
-                    onClick={() =>
-                      loggedinUser.is_admin && shippedFunction(order)
-                    }
+                    onClick={() => loggedinUser.is_admin && shippedFunction(order)}
                   >
                     {order.shipped ? "Skickad" : "Ej skickad"}
                   </p>
                 </div>
+
+
+                {/* Mapping through products in the order */}
+
                 {order.product_ID.map((id) => {
                   const product = products.find((item) => item._id == id);
                   return product ? (
@@ -57,6 +79,10 @@ const OrderPage = () => {
                   ) : null;
                 })}
                 <div className="orderInfo">
+
+
+                  {/* Displaying total price and providing archive button for admin */}
+
                   <p>{order.total_price},00 SEK</p>
                   {loggedinUser.is_admin && (
                     <button
@@ -74,13 +100,20 @@ const OrderPage = () => {
           <div className="OrderPageDivBottom"></div>
         </div>
       ) : (
+
+
+        // ----- Displaying a message if the user has no orders
+
         <div className="OrderPageEmpty">
           <p>Du har inga odrar</p>
-
         </div>
       )}
+
+
+      {/* Return button at the bottom of the page */}
+      
       <div className="orderPageBottom">
-       < ReturnBtn />
+        <ReturnBtn />
       </div>
     </div>
   );

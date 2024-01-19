@@ -3,16 +3,34 @@ import "./LoginPage.css";
 import { UserContext } from "../../Context/UserContext";
 
 const LoginFormPage = () => {
+
+
+  // ----- Accessing login and registrate functions from UserContext
+
   const { login, registrate } = useContext(UserContext);
+
+
+  // ----- State to track the active form (login or registration)
+
   const [loginForm, setLoginForm] = useState(true);
+
+
+  // ----- State variables for user input (name, email, password)
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
+
+
+  // ----- Data object for login
+
   const loginData = {
     email: email,
     password: password,
   };
+
+
+  // ----- Data object for registration
 
   const registrationData = {
     email: email,
@@ -34,6 +52,7 @@ const LoginFormPage = () => {
           >
             Logga in
           </div>
+          
           <div
             style={{
               backgroundColor: loginForm && "#eaeaea",
@@ -45,7 +64,15 @@ const LoginFormPage = () => {
             Registrera
           </div>
         </div>
+
+
+        {/* Conditional rendering based on the active form */}
+
         {loginForm ? (
+
+
+          // ----- Login form
+
           <div className="loginForm">
             <label>E-post</label>
             <input
@@ -63,6 +90,10 @@ const LoginFormPage = () => {
             <a href="#">Återställ lösenord</a>
           </div>
         ) : (
+
+
+          // ----- Registration form
+          
           <div className="registrateForm">
             <label htmlFor="email">E-post</label>
             <input

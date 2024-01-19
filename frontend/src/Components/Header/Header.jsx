@@ -12,16 +12,24 @@ import { CiUser } from "react-icons/ci";
 
 import { Link } from "react-router-dom";
 
-import "./Header.css";
 import { useContext, useState } from "react";
 import { OrderContext } from "../../Context/OrderContext";
 import LangBtn from "../LangBtn/LangBtn";
 import { UserContext } from "../../Context/UserContext";
 import UserDropDown from "../UserDropDown/UserDropDown";
 
+import "./Header.css";
+
 const Header = () => {
+
+  // ----- Accessing cartNum and loggedinUser from OrderContext and UserContext
+
   const { cartNum } = useContext(OrderContext);
   const { loggedinUser } = useContext(UserContext);
+
+
+  // ----- State for controlling the display of user dropdown
+  
   const [dropDownDisplay, setDropDownDisplay] = useState(false);
 
   return (
