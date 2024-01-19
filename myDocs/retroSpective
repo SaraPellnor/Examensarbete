@@ -46,11 +46,14 @@ Jag älskar verkligen det här arbetssättet, dock har jag suttit väldigt mycke
 
 V.3
 
-Glad:
+Glad: Denna veckan har gått bra. Jag har tom hunnit hjälpa andra med saker för att jag har kännt att jag haft tid med det. 
+Det gick lätt med Stripe, mycket enklare än vad jag trode, och jag tycker att jag gjorde en bra lösning. 
 
-Frustrerad:
+Frustrerad: Över felhanteringen. När man ska skickas till "errorpage" om resultatet inte är rätt så fick man tänka om. 
+Det blev väldigt mycket viktigare att sätta res till false istället för tex "user finns inte", för så länge user är något så 
+skickades man vidare, sen blev det fel någon annan stans och fan fattar ingenting. Men nu känns det som att man fått klämm på det.
 
-Sammanfattning:
+Sammanfattning: Bra vecka förutom att jag varit dålig på att skicka upp till github varje dag. Lite slarv men nu på slutet så styrde jag upp det igen.
 
 V.4
 
