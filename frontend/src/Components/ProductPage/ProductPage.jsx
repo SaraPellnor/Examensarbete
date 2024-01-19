@@ -1,5 +1,7 @@
-import "./ProductPage.css";
 import ProductCard from "../ProductCard/ProductCard";
+
+import "./ProductPage.css";
+
 
 const ProductPage = () => {
   return (

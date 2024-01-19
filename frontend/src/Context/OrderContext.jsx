@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
+
+
 import { createContext, useState, useEffect, useContext } from "react";
 import { UserContext } from "./UserContext";
 import { useNavigate } from "react-router-dom";
@@ -7,13 +9,23 @@ import { useNavigate } from "react-router-dom";
 export const OrderContext = createContext();
 
 export const OrderProvider = ({ children }) => {
+
+
+  // ----- State variables for orders, cart, cart number, and total price
+
   const [orders, setOrders] = useState([]);
   const [cart, setCart] = useState([]);
   const [cartNum, setCartNum] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
+
+  // ----- Accessing user-related context and navigation
+
   const { loggedinUser, setErrorMessage } = useContext(UserContext);
   const navigateTo = useNavigate();
+
+
+  // ----- Function to fetch user orders from the server
 
   const getOrders = async () => {
     try {
@@ -24,7 +36,7 @@ export const OrderProvider = ({ children }) => {
         },
         credentials: "include",
       });
-      // Handle errors
+
       if (data.ok) {
         const res = await data.json();
 
@@ -36,7 +48,6 @@ export const OrderProvider = ({ children }) => {
         }
       } else {
         setErrorMessage(data.status);
-
         navigateTo("/error");
       }
     } catch (error) {
@@ -45,11 +56,15 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
-  // ----- Fors the window to stripe checkout page were customer can handle the payments
+
+  // ----- Function to initiate the checkout process using Stripe
 
   const getCheckout = async () => {
     try {
-      // New listItem with data that stripe session needs
+
+
+      // ----- Prepare line items for the Stripe session
+
       const lineItems = cart.map((product) => {
         return {
           price_data: {
@@ -60,7 +75,10 @@ export const OrderProvider = ({ children }) => {
           quantity: product.quantity,
         };
       });
-      // All the data to POST to backend
+
+
+      // ----- Data to be sent to the backend
+
       const dataToSend = {
         lineItems: lineItems,
         userEmail: loggedinUser.email,
@@ -79,6 +97,7 @@ export const OrderProvider = ({ children }) => {
         setErrorMessage(data.status);
         navigateTo("/error");
       }
+
       const res = await data.json();
       window.location = res.url;
     } catch (error) {
@@ -88,10 +107,11 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
-  // returns date of today
+
+  // ----- Function to get the current date
+
   const date = () => {
     const today = new Date();
-
     const options = {
       weekday: "short",
       month: "short",
@@ -103,9 +123,11 @@ export const OrderProvider = ({ children }) => {
     };
 
     const formattedDate = today.toLocaleString("sv-SE", options);
-
     return formattedDate;
   };
+
+
+  // ----- Function to create a new order
 
   const createOrder = async () => {
     if (
@@ -144,8 +166,6 @@ export const OrderProvider = ({ children }) => {
         body: JSON.stringify(orderData),
       });
 
-      // Handle errors
-
       if (!data.ok) {
         setErrorMessage(data.status);
         navigateTo("/error");
@@ -153,7 +173,7 @@ export const OrderProvider = ({ children }) => {
 
       localStorage.clear("cart");
       setCart([]);
-      setCartNum(0)
+      setCartNum(0);
     } catch (error) {
       console.log(error);
       setErrorMessage(error.message);
@@ -161,7 +181,8 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
-  // ----- Add products to cart and Local storage
+
+  // ----- Function to add products to the cart
 
   const addToCart = (product, quantity) => {
     const existingProductIndex = cart.findIndex(
@@ -178,6 +199,9 @@ export const OrderProvider = ({ children }) => {
     setCart(cart);
     setCartNum(cart.length);
   };
+
+
+  // ----- Function to update the shipped status of an order
 
   const shippedFunction = async (order) => {
     try {
@@ -212,7 +236,9 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
-  //DOSENT WORK--------------------------------------------
+
+  // ----- Function to remove an order
+
   const orderRemove = async (id) => {
     if (!id) {
       setErrorMessage("Något gick fel när du försökte ta bort en order");
@@ -240,14 +266,20 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
+
+  // ----- Function to calculate total price
+
   const totalPriceFunction = () => {
-    // count together the value for each item in to acc
+    // Count together the value for each item into acc
     const sum = cart.reduce((acc, item) => {
       return acc + item.product_price * item.quantity;
     }, 0);
 
     sum && setTotalPrice(sum);
   };
+
+
+  // ----- Function to connect to local storage
 
   const conectToLS = () => {
     const inCart = JSON.parse(localStorage.getItem("cart"));
@@ -259,11 +291,17 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
+
+  // ----- useEffect hook to run functions on component mount
+
   useEffect(() => {
     totalPriceFunction();
     conectToLS();
   }, [loggedinUser]);
 
+
+  // ----- Provide the order-related context to children components
+  
   return (
     <OrderContext.Provider
       value={{
@@ -281,7 +319,6 @@ export const OrderProvider = ({ children }) => {
         createOrder,
         totalPrice,
         totalPriceFunction,
-        
       }}
     >
       {children}

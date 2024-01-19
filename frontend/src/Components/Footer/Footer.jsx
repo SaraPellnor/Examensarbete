@@ -1,6 +1,12 @@
+ // ----- Importing the LangBtn component
+
 import LangBtn from "../LangBtn/LangBtn";
 
-import "./Footer.css";
+
+// ----- Importing the stylesheet for Footer
+
+import "./Footer.css"; 
+
 
 const Footer = () => {
   return (
@@ -15,7 +21,7 @@ const Footer = () => {
             <li>Press</li>
             <li>Om oss</li>
             <li>FAQ</li>
-            <li>Integretetspolicy</li>
+            <li>Integritetspolicy</li>
           </ul>
         </div>
         <div>

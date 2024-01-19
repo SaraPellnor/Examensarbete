@@ -2,21 +2,39 @@
 import { useContext } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { MdArrowForwardIos } from "react-icons/md";
-
-import "./CartDrawer.css";
 import { OrderContext } from "../../Context/OrderContext";
 import { useEffect } from "react";
 import ReturnBtn from "../ReturnBtn/ReturnBtn";
 
-const CartDrawer = () => {
-  const { cart, setCart, setCartNum, getCheckout, totalPriceFunction, totalPrice } = useContext(OrderContext);
+import "./CartDrawer.css";
 
+// ----- Component definition
+
+const CartDrawer = () => {
+
+  // ----- Destructuring values from OrderContext
+
+
+  const {
+    cart,
+    setCart,
+    setCartNum,
+    getCheckout,
+    totalPriceFunction,
+    totalPrice,
+  } = useContext(OrderContext);
+
+
+  // ----- Function to remove all items from the cart
 
   const removeAll = () => {
     localStorage.removeItem("cart");
     setCartNum(0);
     setCart([]);
   };
+
+
+  // ----- Function to remove one quantity of a product from the cart
 
   const removeOne = (productId) => {
     const updatedCart = cart
@@ -27,7 +45,6 @@ const CartDrawer = () => {
         }
         return item;
       })
-      // keeps only the product with quantity bigger than 0.
       .filter((item) => item.quantity > 0);
 
     setCart(updatedCart);
@@ -35,17 +52,27 @@ const CartDrawer = () => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
+
+  // ----- useEffect to recalculate total price when the cart changes
+
   useEffect(() => {
     totalPriceFunction();
   }, [setCart]);
 
+
+  // ----- JSX rendering based on cart content
+
   return (
     <div className="cartDrawer">
       {cart.length > 0 ? (
+
+
+        // ----- Display when cart has items
+
         <div className="cartDrawerDiv">
           <div className="cartDrawerDivTop">
             <button onClick={() => removeAll()}>
-              <FaRegTrashCan /> Rensa Kundkorg
+              <FaRegTrashCan /> Clear Cart
             </button>
           </div>
           <div className="productsInCarList">
@@ -73,21 +100,25 @@ const CartDrawer = () => {
           </div>
           <div className="totalPriceDiv">
             <div className="totalPrice">
-              <p>Totalt: {totalPrice},00 SEK</p>
+              <p>Total: {totalPrice},00 SEK</p>
             </div>
           </div>
           <div className="cartDrawerDivBottom">
-          <ReturnBtn />
+            <ReturnBtn />
 
             <button className="bayBtn" onClick={() => getCheckout()}>
-              Till kassan <MdArrowForwardIos />
+              Proceed to Checkout <MdArrowForwardIos />
             </button>
           </div>
         </div>
       ) : (
+
+
+        // ----- Display when cart is empty
+
         <div className="cartEmpty">
-          <p>Din kundkorg är tom</p>
-         <ReturnBtn />
+          <p>Your cart is empty</p>
+          <ReturnBtn />
         </div>
       )}
     </div>
