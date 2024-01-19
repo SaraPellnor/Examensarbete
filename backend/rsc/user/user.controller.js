@@ -38,7 +38,7 @@ const isUserLoggedIn = (req, res, err) => {
       const loggedInUser = req.session.user;
 
     !loggedInUser
-      ? res.status(200).json("User is not logged in")
+      ? res.status(200).json(false)
       : res.status(200).json(loggedInUser);
   } catch (error) {
     res.status(400).json(err);
@@ -89,7 +89,7 @@ const logInUser = async (req, res, err) => {
 const logOutUser = async (req, res, err) => {
   try {
     !req.session.user
-      ? res.status(400).json("user is not logged in")
+      ? res.status(400).json(false)
       : 
         (req.session.user = null);
 

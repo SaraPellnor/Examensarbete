@@ -72,7 +72,7 @@ const CartDrawer = () => {
         <div className="cartDrawerDiv">
           <div className="cartDrawerDivTop">
             <button onClick={() => removeAll()}>
-              <FaRegTrashCan /> Clear Cart
+              <FaRegTrashCan /> Ränsa
             </button>
           </div>
           <div className="productsInCarList">
@@ -100,14 +100,14 @@ const CartDrawer = () => {
           </div>
           <div className="totalPriceDiv">
             <div className="totalPrice">
-              <p>Total: {totalPrice},00 SEK</p>
+              <p>Totalt: {totalPrice},00 SEK</p>
             </div>
           </div>
           <div className="cartDrawerDivBottom">
             <ReturnBtn />
 
             <button className="bayBtn" onClick={() => getCheckout()}>
-              Proceed to Checkout <MdArrowForwardIos />
+            Gå till betalning<MdArrowForwardIos />
             </button>
           </div>
         </div>
@@ -117,7 +117,7 @@ const CartDrawer = () => {
         // ----- Display when cart is empty
 
         <div className="cartEmpty">
-          <p>Your cart is empty</p>
+          <p>Kundvagnen är tom</p>
           <ReturnBtn />
         </div>
       )}

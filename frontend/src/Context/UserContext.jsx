@@ -50,7 +50,7 @@ export const UserProvider = ({ children }) => {
         body: JSON.stringify(user),
       });
       const res = await data.json();
-
+console.log(res);
       setLoggedinUser(res);
       navigateTo("/");
     } catch (error) {
@@ -96,7 +96,7 @@ export const UserProvider = ({ children }) => {
         credentials: "include",
       });
       const res = await data.json();
-
+console.log(res);
       setLoggedinUser(res);
     } catch (error) {
       console.log(error);
@@ -110,16 +110,20 @@ export const UserProvider = ({ children }) => {
 
   const logOutUser = async () => {
     try {
-      await fetch("http://localhost:3000/app/user/logout", {
+      const res = await fetch("http://localhost:3000/app/user/logout", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
         credentials: "include",
       });
+      const data = res.json()
+      if (!data) { setErrorMessage(data.status);
+        navigateTo("/error");}
       setLoggedinUser();
       navigateTo("/");
     } catch (error) {
+      console.log("hej");
       console.log(error);
       setErrorMessage(error.message);
       navigateTo("/error");

@@ -1,4 +1,6 @@
 .orderSuccess {
+    display: flex;
+    flex-direction: column;
     padding: 60px;
     gap: 50px;
     text-align: center;

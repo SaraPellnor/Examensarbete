@@ -23,7 +23,7 @@ const UserDropDown = () => {
       )}
       {loggedinUser && (
         <Link to={"/orders"}>
-          <p>Orders</p>
+          <p>Ordrar</p>
         </Link>
       )}
       {loggedinUser ? (
