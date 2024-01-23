@@ -192,3 +192,25 @@ tid: 6h 30min
 
 V.3
 Tid: 39h
+
+-----------------------------------------------------------------------------------------------------------
+
+22 jan 2024
+Idag har jag: Gjort ny backlog och fixat lite tex, readmefilen, felhantering i login med alert och hanterar bekräftelse av lösenord. Har dessutom skapat en user page (utan innehåll)
+Det som tog tid var: när det krånglar med felhanteringen och det inte går som man tror att det ska.
+Något som jag har problem med är: Ingenting just nu
+Jag ska lösa mitt problem så här: -
+Imorgon ska jag: Göra User page klar.
+tid: 5h
+
+23 jan 2024
+Idag har jag: Inte gjort det jag skulle, vilket var userPage. Jag fastnade i stripe validation men kom inte fram, vilket senare visade sig bero på att jag försökte köra en setErrorMessage som inte fungerade. 
+Hur som så valde jag att inte använda min validation funktion, kanske att jag ger mig på det om jag får tid över senare. Jag har även testat ett sätt att 
+köra båda scripten samtidigt med npm start, det fungerade bra men dock måste jag starta om servern om jag ändrar i backendkoden och det orkade jag inte
+så gick över till det gamla vanliga istället. Har också fixat en bugg i create order som inte ville skapas. Det berodde på att jag hade satt loggedinuser till false som defsult så den 
+gick igenom en ifsats där det var meningen att denskulle stannat annars. 
+Det som tog tid var: Att felsöka create order. 
+Något som jag har problem med är: just nu ingenting
+Jag ska lösa mitt problem så här: -
+Imorgon ska jag: GÖRA USERPAGE!
+tid: 7h
