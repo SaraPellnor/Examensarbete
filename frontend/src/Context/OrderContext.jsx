@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 
-
 import { createContext, useState, useEffect, useContext } from "react";
 import { UserContext } from "./UserContext";
 import { useNavigate } from "react-router-dom";
@@ -9,8 +8,6 @@ import { useNavigate } from "react-router-dom";
 export const OrderContext = createContext();
 
 export const OrderProvider = ({ children }) => {
-
-
   // ----- State variables for orders, cart, cart number, and total price
 
   const [orders, setOrders] = useState([]);
@@ -18,12 +15,10 @@ export const OrderProvider = ({ children }) => {
   const [cartNum, setCartNum] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
-
   // ----- Accessing user-related context and navigation
 
   const { loggedinUser, setErrorMessage } = useContext(UserContext);
   const navigateTo = useNavigate();
-
 
   // ----- Function to fetch user orders from the server
 
@@ -56,13 +51,10 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
-
   // ----- Function to initiate the checkout process using Stripe
 
   const getCheckout = async () => {
     try {
-
-
       // ----- Prepare line items for the Stripe session
 
       const lineItems = cart.map((product) => {
@@ -75,7 +67,6 @@ export const OrderProvider = ({ children }) => {
           quantity: product.quantity,
         };
       });
-
 
       // ----- Data to be sent to the backend
 
@@ -107,7 +98,6 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
-
   // ----- Function to get the current date
 
   const date = () => {
@@ -126,14 +116,14 @@ export const OrderProvider = ({ children }) => {
     return formattedDate;
   };
 
-
   // ----- Function to create a new order
 
   const createOrder = async () => {
     if (
       cart.length === 0 ||
       loggedinUser === undefined ||
-      loggedinUser === "User is not logged in"
+      loggedinUser === "User is not logged in" ||
+      loggedinUser === false
     ) {
       setErrorMessage("Något gick fel vid skapandet av order...");
       navigateTo("/error");
@@ -181,7 +171,6 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
-
   // ----- Function to add products to the cart
 
   const addToCart = (product, quantity) => {
@@ -199,7 +188,6 @@ export const OrderProvider = ({ children }) => {
     setCart(cart);
     setCartNum(cart.length);
   };
-
 
   // ----- Function to update the shipped status of an order
 
@@ -236,7 +224,6 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
-
   // ----- Function to remove an order
 
   const orderRemove = async (id) => {
@@ -266,7 +253,6 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
-
   // ----- Function to calculate total price
 
   const totalPriceFunction = () => {
@@ -277,7 +263,6 @@ export const OrderProvider = ({ children }) => {
 
     sum && setTotalPrice(sum);
   };
-
 
   // ----- Function to connect to local storage
 
@@ -291,7 +276,6 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
-
   // ----- useEffect hook to run functions on component mount
 
   useEffect(() => {
@@ -299,9 +283,8 @@ export const OrderProvider = ({ children }) => {
     conectToLS();
   }, [loggedinUser]);
 
-
   // ----- Provide the order-related context to children components
-  
+
   return (
     <OrderContext.Provider
       value={{

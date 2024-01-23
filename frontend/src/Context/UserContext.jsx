@@ -157,6 +157,8 @@ export const UserProvider = ({ children }) => {
         logOutUser,
         errorMessage,
         setComfirmedPassword,
+        setErrorMessage,
+        auth,
       }}
     >
       {children}
