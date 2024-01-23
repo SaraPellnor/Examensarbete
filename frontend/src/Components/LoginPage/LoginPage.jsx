@@ -1,19 +1,18 @@
 import { useContext, useState } from "react";
+import { useNavigate} from "react-router-dom"
 import "./LoginPage.css";
 import { UserContext } from "../../Context/UserContext";
 
 const LoginFormPage = () => {
-
-
+  const navigateTo = useNavigate()
   // ----- Accessing login and registrate functions from UserContext
 
-  const { login, registrate } = useContext(UserContext);
-
+  const { login, registrate, setComfirmedPassword, loggedinUser } = useContext(UserContext);
+  loggedinUser && navigateTo("/user")
 
   // ----- State to track the active form (login or registration)
 
   const [loginForm, setLoginForm] = useState(true);
-
 
   // ----- State variables for user input (name, email, password)
 
@@ -28,7 +27,6 @@ const LoginFormPage = () => {
     email: email,
     password: password,
   };
-
 
   // ----- Data object for registration
 
@@ -52,7 +50,7 @@ const LoginFormPage = () => {
           >
             Logga in
           </div>
-          
+
           <div
             style={{
               backgroundColor: loginForm && "#eaeaea",
@@ -65,12 +63,9 @@ const LoginFormPage = () => {
           </div>
         </div>
 
-
         {/* Conditional rendering based on the active form */}
 
         {loginForm ? (
-
-
           // ----- Login form
 
           <div className="loginForm">
@@ -91,9 +86,8 @@ const LoginFormPage = () => {
           </div>
         ) : (
 
-
           // ----- Registration form
-          
+
           <div className="registrateForm">
             <label htmlFor="email">E-post</label>
             <input
@@ -114,7 +108,11 @@ const LoginFormPage = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <label htmlFor="">Bekräfta Lösenord</label>
-            <input placeholder="Lösenord" type="password" />
+            <input
+              placeholder="Bekräfta lösenord"
+              type="password"
+              onChange={(e) => setComfirmedPassword(e.target.value)}
+            />
             <button type="submit" onClick={() => registrate(registrationData)}>
               Registrera dig
             </button>

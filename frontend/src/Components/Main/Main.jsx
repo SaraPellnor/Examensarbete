@@ -7,6 +7,7 @@ import CartDrawer from "../CartDrawer/CartDrawer"
 import OrderSuccess from "../OrderSuccess/OrderSuccess"
 import ErrorPage from "../ErrorPage/ErrorPage"
 import "./Main.css"
+import UserPage from "../UserPage/UserPage"
 
 const Main = () => {
 
@@ -21,6 +22,7 @@ const Main = () => {
         <Route path="/orders" element={<OrderPage />} />
         <Route path="/product/:id" element={<DetailPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/user" element={<UserPage />} />
         <Route path="/order-succsess" element={<OrderSuccess />} />
         <Route path="/error" element={<ErrorPage />} />
       </Routes>
