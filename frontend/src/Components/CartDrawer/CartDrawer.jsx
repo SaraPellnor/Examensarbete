@@ -1,18 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { MdArrowForwardIos } from "react-icons/md";
 import { OrderContext } from "../../Context/OrderContext";
-import { useEffect } from "react";
 import ReturnBtn from "../ReturnBtn/ReturnBtn";
 
 import "./CartDrawer.css";
+import { UserContext } from "../../Context/UserContext";
 
 // ----- Component definition
 
 const CartDrawer = () => {
+  const navigateTo = useNavigate()
 
-  // ----- Destructuring values from OrderContext
+
+  // ----- Destructuring values from OrderContext and userContext
 
 
   const {
@@ -23,6 +26,8 @@ const CartDrawer = () => {
     totalPriceFunction,
     totalPrice,
   } = useContext(OrderContext);
+
+  const {loggedinUser} = useContext(UserContext)
 
 
   // ----- Function to remove all items from the cart
@@ -51,6 +56,10 @@ const CartDrawer = () => {
     setCartNum(updatedCart.length);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
+
+  const handleGetCheckout = () => {
+    loggedinUser ? getCheckout() : navigateTo("/login")
+  }
 
 
   // ----- useEffect to recalculate total price when the cart changes
@@ -106,7 +115,7 @@ const CartDrawer = () => {
           <div className="cartDrawerDivBottom">
             <ReturnBtn />
 
-            <button className="bayBtn" onClick={() => getCheckout()}>
+            <button className="bayBtn" onClick={() =>handleGetCheckout()}>
             Gå till betalning<MdArrowForwardIos />
             </button>
           </div>

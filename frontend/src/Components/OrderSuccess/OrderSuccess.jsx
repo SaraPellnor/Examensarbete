@@ -21,11 +21,13 @@ const OrderSuccess = () => {
     if (
       cart.length !== 0 &&
       loggedinUser !== undefined &&
-      loggedinUser !== "User is not logged in"
+      loggedinUser !== "User is not logged in" &&
+      loggedinUser !== false
+
     ) {
       createOrder();
     }
-  }, [cart]);
+  }, [cart, loggedinUser]);
 
   return (
     <div className="orderSuccess">
