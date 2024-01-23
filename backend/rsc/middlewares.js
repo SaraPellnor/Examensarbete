@@ -18,8 +18,6 @@ const validation = (joiSchema) => {
   };
 };
 
-
-
 // ---- checks if user is an admin
 
 const isAdmin = (req, res, next) => {
@@ -33,22 +31,15 @@ const isAdmin = (req, res, next) => {
   }
 };
 
-
-
 // ---- Check authentication based on user session
 
 const auth = (req, res, next, err) => {
-
   try {
-    !req.session.user 
-      ? res.status(400).json(err)
-      : next()
+    !req.session.user ? res.status(400).json(err) : next();
   } catch (error) {
     res.status(400).json(err);
   }
 };
-
-
 
 // ---- Export the validation function for use in other parts of the application
 
