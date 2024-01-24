@@ -27,7 +27,7 @@ const OrderPage = () => {
 
   return (
     <div className="orderPage">
-      {orders.length > 0 ? (
+      {typeof orders !== "string" ? (
         <div className="orderPageDiv">
 
 
@@ -105,7 +105,7 @@ const OrderPage = () => {
         // ----- Displaying a message if the user has no orders
 
         <div className="OrderPageEmpty">
-          <p>Du har inga odrar</p>
+          <p>{orders}</p>
         </div>
       )}
 

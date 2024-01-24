@@ -17,10 +17,6 @@ const ProductCard = () => {
   const { addToCart } = useContext(OrderContext);
 
 
-  // ----- Displaying a loading message if products are not available
-
-  !products && <p>Loading...</p>;
-
   return (
 
 
