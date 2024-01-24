@@ -1,0 +1,61 @@
+.userPage {
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+}
+
+.userPage p {
+color: #5a7476;
+}
+
+.userPage h3 {
+padding: 10px 0;    }
+
+.userPage > * {
+    padding: 10px 0;
+}
+
+.userPage .edit {
+    display: flex;
+    justify-content: space-between;
+}
+
+.userDiv {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ededed;
+}
+
+.emailDiv p, .nameDiv p {
+    color:  black;
+
+}
+
+.userDiv div {
+    padding: 10px;
+    border-bottom: 1px solid #ededed;
+
+}
+
+.userDiv p {
+display: flex;
+align-items: center;
+}
+
+.userDiv div:last-child {
+border: none;}
+
+.userPage .handlePayment {
+    padding: 10px 0;
+    border-bottom: 1px solid #ededed;
+
+}
+
+.userPage .clubpointsDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ededed;
+
+}

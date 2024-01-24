@@ -19,7 +19,7 @@ const UserDropDown = () => {
       {/* Displaying user information and navigation links based on authentication status */}
      
       {loggedinUser && (
-        <p>{loggedinUser.is_admin ? "Admin" : loggedinUser.username}</p>
+       <Link to={"/user"}> <p>{loggedinUser.is_admin ? "Admin" : loggedinUser.username}</p></Link>
       )}
       {loggedinUser && (
         <Link to={"/orders"}>

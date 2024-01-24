@@ -1,0 +1,28 @@
+.editProducts {
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+}
+
+/* -------------------------------------------- */
+
+.editProducts .productCard {
+  flex-direction: row;
+  width: 100%;
+}
+
+.editProducts .productCard img {
+  max-width: 50px;
+}
+
+.editProducts .productCard div p:last-child {
+display: none;  
+}
+
+.editProducts .icons {
+  display: none;
+}

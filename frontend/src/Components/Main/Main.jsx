@@ -14,6 +14,7 @@ const LazyCartDrawer = lazy(() => import("../CartDrawer/CartDrawer"));
 
 import "./Main.css";
 import LoadingPage from "../LoadingPage/LoadingPage";
+import EditProducts from "../EditProducts/EditProducts";
 
 const Main = () => {
   // ----- Configuring routes for different pages
@@ -22,6 +23,8 @@ const Main = () => {
     <div className="main">
       <Routes>
         <Route path="/" element={<ProductPage />} />
+        <Route path="/edit-products" element={<EditProducts />} />
+
         <Route
           path="/cart"
           element={
