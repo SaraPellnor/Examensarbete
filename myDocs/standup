@@ -214,3 +214,11 @@ Något som jag har problem med är: just nu ingenting
 Jag ska lösa mitt problem så här: -
 Imorgon ska jag: GÖRA USERPAGE!
 tid: 7h
+
+24 jan 2024
+Idag har jag: Fixat Lazy loading med React Lazy. Väldigt nöjd med att jag hittade det och att det fungerar så bra. Har även inplemtenterat Framer Motion då jag ville ha en animering på Lazy iconen. Har gjort klart userPage. Ska bara göra "redigera produkter" sidan klart sen känns det bra. Man kan redigera user och det är beroende på amin osv. 
+Det som tog tid var: Att lösa defaultvärderna på update user så att man kan inte behöver fylla i det om man inte vill redigera det.
+Något som jag har problem med är: om jag kan använda productcard för att redigera eller om jag måste göra nya "editproductcard"
+Jag ska lösa mitt problem så här: testa mig fram.
+Imorgon ska jag: göra så att man kan redigera productcard
+tid: 11h
