@@ -1,0 +1,20 @@
+.loadingPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50vh;
+  padding: 30px;
+  background-color: white;
+}
+
+.animatedSpinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animatedSpinner svg {
+  font-size: 50px;
+  cursor: auto;
+}

@@ -38,8 +38,7 @@ export const OrderProvider = ({ children }) => {
         if (res) {
           setOrders(res);
         } else {
-          setErrorMessage(res);
-          navigateTo("/error");
+setOrders("Du har inga ordrar ännu")
         }
       } else {
         setErrorMessage(data.status);

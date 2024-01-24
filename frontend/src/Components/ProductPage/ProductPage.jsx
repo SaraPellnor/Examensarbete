@@ -1,12 +1,16 @@
-import ProductCard from "../ProductCard/ProductCard";
+import { lazy, Suspense } from "react";
 
 import "./ProductPage.css";
+import LoadingPage from "../LoadingPage/LoadingPage.jsx";
 
+const LazyProductCards = lazy(() => import("../ProductCard/ProductCard.jsx"));
 
 const ProductPage = () => {
   return (
     <div className="productPage">
-      <ProductCard />
+      <Suspense fallback={<LoadingPage />}>
+        <LazyProductCards />{" "}
+      </Suspense>
     </div>
   );
 };
