@@ -105,7 +105,7 @@ const logOutUser = async (req, res, err) => {
 
 const createUser = async (req, res) => {
   try {
-    const user = req.body;
+    const user = {isAdmin: false, ...req.body}
 
     // Hash the password before storing it in the database
     user.password = await bcrypt.hash(user.password, 10);
@@ -140,14 +140,20 @@ const createUser = async (req, res) => {
 
 const changeUser = async (req, res, err) => {
   try {
-    // Update the user in the database and return the updated user
+    if (req.body.password) {
+      
+    // Hash the password before storing it in the database
+    req.body.password = await bcrypt.hash(req.body.password, 10);
+    }
+
+    // Updating user in the database
     const user = await UserModel.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
+
     !user
       ? res.status(400).json("User not found")
-      : 
-        res.status(200).json(user);
+      : res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ error: "Server error" });
   }

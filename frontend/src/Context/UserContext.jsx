@@ -7,17 +7,35 @@ import { useNavigate } from "react-router-dom";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+
+
   // ----- State variables for users, loggedinUser, and errorMessage
 
   const [users, setUsers] = useState([]);
   const [loggedinUser, setLoggedinUser] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
   const [comfirmedPassword, setComfirmedPassword] = useState("");
+  const [user, setUser] = useState();
+
+
 
 
   // ----- Access navigate function from react-router-dom
 
   const navigateTo = useNavigate();
+
+  const getUser = async () => {
+    try {
+      const data = await fetch(`http://localhost:3000/app/user/${loggedinUser.user_id}`);
+      const res = await data.json();
+      setUser(res);
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(error.message);
+      navigateTo("/error");
+    }
+  };
+
 
   // ----- Function to fetch all users
 
@@ -51,7 +69,7 @@ export const UserProvider = ({ children }) => {
         window.alert(res);
         return;
       }
-      console.log("it dit not work");
+      console.log(loggedinUser);
       setLoggedinUser(res);
       navigateTo("/");
     } catch (error) {
@@ -91,6 +109,31 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const updateUser = async (udatedUser) => {
+    console.log(udatedUser);
+    try {
+      const data = await fetch(`http://localhost:3000/app/user/update/${loggedinUser.user_id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(udatedUser),
+      });
+      const res = await data.json();
+      if (typeof res === "string") {
+        window.alert(res);
+        return;
+      }
+      logOutUser()    
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(error.message);
+      navigateTo("/error");
+    }
+  };
+
+
   // ----- Function to check if the user is authenticated
 
   const auth = async () => {
@@ -129,9 +172,8 @@ export const UserProvider = ({ children }) => {
         navigateTo("/error");
       }
       setLoggedinUser();
-      navigateTo("/");
+      navigateTo("/login");
     } catch (error) {
-      console.log("hej");
       console.log(error);
       setErrorMessage(error.message);
       navigateTo("/error");
@@ -159,6 +201,9 @@ export const UserProvider = ({ children }) => {
         setComfirmedPassword,
         setErrorMessage,
         auth,
+        getUser,
+        user,
+        updateUser,
       }}
     >
       {children}

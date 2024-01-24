@@ -1,13 +1,13 @@
 import { lazy, Suspense } from "react";
 
-import "./ProductPage.css";
+import "./EditProducts.css";
 import LoadingPage from "../LoadingPage/LoadingPage.jsx";
 
 const LazyProductCards = lazy(() => import("../ProductCard/ProductCard.jsx"));
 
-const ProductPage = () => {
+const EditProducts = () => {
   return (
-    <div className="productPage">
+    <div className="editProducts">
       <Suspense fallback={<LoadingPage />}>
         <LazyProductCards />
       </Suspense>
@@ -15,4 +15,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default EditProducts;
