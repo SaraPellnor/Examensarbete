@@ -222,3 +222,11 @@ Något som jag har problem med är: om jag kan använda productcard för att red
 Jag ska lösa mitt problem så här: testa mig fram.
 Imorgon ska jag: göra så att man kan redigera productcard
 tid: 11h
+
+25 jan 2024
+Idag har jag: Hjälpt en klasskompis med ett problem och gjort Update Order med en funktion som jag är väldigt nöjd med. Den renderar ut alla categorialternativ per order och om categorin finns i order så är en ruta i checkad annars är rutan tom. När man trycker på en tom ruta så uppdateras categoriArrayen i produkten och bocken blir i kryssad och virse versa. Med en knapp så skickar man iväg den uppdaterade produken till en updateProduct function i productContext. Så nöjd med dagen.
+Det som tog tid var: Att lösa funktionen och tänka igenom hur den skulle fungera med att uppdatera categoryArray
+Något som jag har problem med är: Ingenting just nu.
+Jag ska lösa mitt problem så här: -
+Imorgon ska jag: göra så att man kan uppdatera allt innehåll i editProduct, lägga till en produkt, ta bort en produkt och styling. 
+tid: 7h 30min
