@@ -1,32 +1,24 @@
 import { Link } from "react-router-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 import "./Menu.css";
+import { ProductContext } from "../../Context/ProductContext";
 
 const Menu = () => {
-
-
-  // ----- Function to fetch menu list from the server
   
-  const getmenuList = async () => {
-    const data = await fetch("http://localhost:3000/app/categories/");
-    const res = await data.json();
-    const menuList = await res.filter((item) => item.type === "menu");
-    setMenuList(await menuList);
-    const ucList = await res.filter((item) => item.type === "uc");
-    setUCList(await ucList);
-  };
 
 
   // ----- State variables to manage menu and drawer display
   
   const [drawerDisplay, setDrawerDisplay] = useState("none");
-  const [menuList, setMenuList] = useState([]);
-  const [ucList, setUCList] = useState([]);
+  const {categories} = useContext(ProductContext)
   const [activeUC, setActiveUC] = useState([]);
   const [activeCategory, setActiveCategory] = useState("");
 
+  const menuList = categories.filter((item) => item.type === "menu");
+
+  const ucList = categories.filter((item) => item.type === "uc");
 
   // ----- Function to open/close the drawer based on the selected category
   
@@ -53,13 +45,6 @@ const Menu = () => {
     setDrawerDisplay("none");
     setActiveCategory("");
   };
-
-  
-  // ----- Fetch menu list on component mount
-  
-  useEffect(() => {
-    getmenuList();
-  }, []);
 
   return (
     <div onMouseLeave={() => handleOnMouseLeave()} className="menu">

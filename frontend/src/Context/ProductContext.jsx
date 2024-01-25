@@ -15,6 +15,7 @@ export const ProductProvider = ({ children }) => {
 
   const [products, setProducts] = useState([]);
   const [productDetail, setProductDetail] = useState({});
+  const [categories, setCategories] = useState([]);
 
 
   // ----- Accessing user-related context and navigation
@@ -36,6 +37,11 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+  const updateProduct = (product) => {
+    console.log("uppdaterad product");
+    console.log(product);
+  }
+
 
   // ----- Function to fetch details of a specific product
 
@@ -51,17 +57,30 @@ export const ProductProvider = ({ children }) => {
   };
 
 
+  const getCategories = async () => {
+    try {
+      const data = await fetch("http://localhost:3000/app/categories/");
+      const res = await data.json();
+      setCategories(res);
+    } catch (error) {
+      setErrorMessage(error.message);
+      navigateTo("/error");
+    }
+  };
+
+
   // ----- useEffect hook to fetch products on component mount
 
   useEffect(() => {
     getProducts();
+    getCategories()
   }, []);
 
 
   // ----- Provide product-related context to children components
   
   return (
-    <ProductContext.Provider value={{ products, getProductDetails, productDetail }}>
+    <ProductContext.Provider value={{ products, setProducts, getProductDetails, productDetail, categories, updateProduct }}>
       {children}
     </ProductContext.Provider>
   );
