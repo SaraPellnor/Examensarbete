@@ -146,7 +146,7 @@ export const UserProvider = ({ children }) => {
         credentials: "include",
       });
       const res = await data.json();
-      !res && console.log(res);
+      !res && console.log("loggedinUser=",res);
       setLoggedinUser(res);
     } catch (error) {
       console.log(error);

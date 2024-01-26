@@ -24,7 +24,7 @@ const UserPage = () => {
   const [email, setEmail] = useState(false);
   const [password, setPassword] = useState();
 
-  const navigateTo = useNavigate()
+  const navigateTo = useNavigate();
 
   const updatedUser = {
     isAdmin: admin,
@@ -39,7 +39,7 @@ const UserPage = () => {
   };
 
   const renderProducts = () => {
-    navigateTo("/edit-products")
+    navigateTo("/edit-products");
     console.log("renderProducts");
   };
 
@@ -132,13 +132,15 @@ const UserPage = () => {
           </p>
           <h3>Kontosäkerhet</h3>
         </div>
-        <p
-          onClick={() => {
-            user.isAdmin && renderProducts();
-          }}
-        >
-          <FaPencilAlt /> Redigera säkerhetsinställningar
-        </p>
+        {user.isAdmin && (
+          <p
+            onClick={() => {
+              renderProducts();
+            }}
+          >
+            <FaPencilAlt /> Hantera Produkter
+          </p>
+        )}
       </div>
     )
   );

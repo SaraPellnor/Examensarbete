@@ -1,0 +1,69 @@
+.editProductCard {
+  width: 100%;
+}
+
+.editProductCard .newProduct {
+  display: flex;
+flex-wrap: wrap;  
+justify-content: center;
+gap: 10px;
+  padding: 20px;
+  border: 1px solid rgb(200, 199, 199);
+  border-radius: 10px;
+  background-color: blanchedalmond;
+}
+
+.editProductCard img {
+  width: 25%;
+}
+
+.editProductCard .newProduct .filepicker {
+  display: flex;
+  flex-direction: row;
+align-items: center;  
+gap: 20px;
+  /* max-width: 600px; */
+}
+
+.newProduct .filepickerDetails {
+display: flex;
+flex-direction: column;
+}
+.newProduct .filepicker p {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.newProductDetails {
+  display: flex;
+  flex-direction: column;
+align-items: center;  
+/* max-width: 600px; */
+gap: 10px;
+}
+
+
+.editProductCard button {
+  width: 70px;
+}
+
+.editProductCard input {
+  width: 150px;
+  border: none;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  color: rgb(201, 201, 201);
+  padding: 5px;
+}
+
+.editProductCard .descriptionInput {
+  border: none;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  padding: 5px;
+  width: 150px;
+}
+
+.newProduct .newCategoryInput {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
