@@ -112,7 +112,6 @@ const createUser = async (req, res) => {
 
     // Create a new user in the database
     const newUser = await UserModel.create(req.body);
-    console.log(newUser);
     !newUser
       ? res.status(400).json("Unable to create the user")
       : // Create a session variable with user ID

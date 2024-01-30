@@ -1,10 +1,14 @@
+// ----- Importing necessary React components and libraries
 import { lazy, Suspense } from "react";
-
 import "./EditProducts.css";
 import LoadingPage from "../LoadingPage/LoadingPage.jsx";
 
-const LazyEditProductCards = lazy(() => import("../EditProductCard/EditProductCard.jsx"));
+// ---- Lazily importing the EditProductCard component for better code splitting
+const LazyEditProductCards = lazy(() =>
+  import("../EditProductCard/EditProductCard.jsx")
+);
 
+// ----- Functional component representing the EditProducts page
 const EditProducts = () => {
   return (
     <div className="editProducts">
@@ -15,4 +19,5 @@ const EditProducts = () => {
   );
 };
 
+// ----- Exporting the EditProducts component as the default export
 export default EditProducts;
