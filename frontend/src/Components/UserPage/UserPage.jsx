@@ -18,8 +18,7 @@ import "./UserPage.css";
 const UserPage = () => {
   const { user, getUser, loggedinUser, updateUser } = useContext(UserContext);
   const [edit, setEdit] = useState(false);
-
-  const [admin, setAdmin] = useState(true);
+  const [admin, setAdmin] = useState(loggedinUser.is_admin);
   const [username, setUsername] = useState(false);
   const [email, setEmail] = useState(false);
   const [password, setPassword] = useState();
@@ -33,18 +32,20 @@ const UserPage = () => {
     password: password,
   };
 
+  // ----- Function to handle user details update and toggle edit mode
+
   const handleUpdateUser = () => {
     edit && updateUser(updatedUser);
     !edit ? setEdit(true) : setEdit(false);
   };
 
+  // ----- Function to navigate to the "Edit Products" page for administrators
+
   const renderProducts = () => {
     navigateTo("/edit-products");
-    console.log("renderProducts");
   };
 
   useEffect(() => {
-    console.log(loggedinUser);
     loggedinUser && getUser();
   }, [loggedinUser]);
 
@@ -105,7 +106,7 @@ const UserPage = () => {
                 />
               </p>
             </div>
-            {user.isAdmin && (
+            {loggedinUser.is_admin && (
               <div className="adminDiv">
                 <p>Admin:</p>
                 <p onClick={() => (admin ? setAdmin(false) : setAdmin(true))}>

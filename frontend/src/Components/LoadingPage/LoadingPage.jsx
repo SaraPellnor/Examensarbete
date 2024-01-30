@@ -1,7 +1,9 @@
+// Importing styles and animation libraries
 import "./LoadingPage.css";
 import { motion } from "framer-motion";
 import { ImSpinner11 } from "react-icons/im";
 
+// Functional component representing a loading spinner page
 export default function LoadingPage() {
   return (
     <div className="loadingPage">

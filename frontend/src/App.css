@@ -15,7 +15,6 @@
 
 button {
   cursor: pointer;
-
 }
 
 a {
@@ -28,7 +27,6 @@ svg {
 
 ul {
   list-style-type: none;
-
 }
 
 /* Removes the arrows in the number inputs */
@@ -37,7 +35,6 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 
 /* Mobile screens */
 @media screen and (max-width: 600px) {
@@ -49,9 +46,8 @@ input[type="number"]::-webkit-outer-spin-button {
   .productPage .productCard {
     width: 100%;
   }
-  
-  .logoDiv img {
 
+  .logoDiv img {
     min-width: 240px;
   }
 
@@ -62,7 +58,34 @@ input[type="number"]::-webkit-outer-spin-button {
 
   svg {
     font-size: 15px;
-
   }
-  
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table td,
+  table th {
+    display: block;
+    text-align: left;
+  }
+
+  table th {
+    display: none;
+  }
+
+  table td {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  tr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
 }

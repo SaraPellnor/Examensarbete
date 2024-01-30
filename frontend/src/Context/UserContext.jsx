@@ -64,12 +64,10 @@ export const UserProvider = ({ children }) => {
         body: JSON.stringify(user),
       });
       const res = await data.json();
-      console.log(res);
       if (typeof res === "string") {
         window.alert(res);
         return;
       }
-      console.log(loggedinUser);
       setLoggedinUser(res);
       navigateTo("/");
     } catch (error) {
@@ -109,8 +107,9 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  // ----- Function that updates user in user page
+
   const updateUser = async (udatedUser) => {
-    console.log(udatedUser);
     try {
       const data = await fetch(`http://localhost:3000/app/user/update/${loggedinUser.user_id}`, {
         method: "POST",
@@ -146,7 +145,6 @@ export const UserProvider = ({ children }) => {
         credentials: "include",
       });
       const res = await data.json();
-      !res && console.log("loggedinUser=",res);
       setLoggedinUser(res);
     } catch (error) {
       console.log(error);

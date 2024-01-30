@@ -2,68 +2,97 @@
   width: 100%;
 }
 
-.editProductCard .newProduct {
-  display: flex;
-flex-wrap: wrap;  
-justify-content: center;
-gap: 10px;
-  padding: 20px;
-  border: 1px solid rgb(200, 199, 199);
-  border-radius: 10px;
-  background-color: blanchedalmond;
-}
-
-.editProductCard img {
-  width: 25%;
-}
-
-.editProductCard .newProduct .filepicker {
-  display: flex;
-  flex-direction: row;
-align-items: center;  
-gap: 20px;
-  /* max-width: 600px; */
-}
-
-.newProduct .filepickerDetails {
-display: flex;
-flex-direction: column;
-}
-.newProduct .filepicker p {
-  font-size: 13px;
-  font-style: italic;
-}
-
-.newProductDetails {
+.addProductDiv {
   display: flex;
   flex-direction: column;
-align-items: center;  
-/* max-width: 600px; */
-gap: 10px;
+  gap: 20px;
+  padding-bottom: 40px;
+
 }
 
-
-.editProductCard button {
-  width: 70px;
+thead tr th {
+  border-bottom: 1px solid rgb(200, 199, 199);
+  padding-bottom: 5px;
 }
 
-.editProductCard input {
-  width: 150px;
+.addPic {
+  cursor: pointer;
+}
+
+.addPic:hover {
+  color: #7f9b9d;
+}
+
+td img {
+  max-width: 40px;
+}
+
+td input {
   border: none;
-  border-bottom: 1px solid rgb(201, 201, 201);
-  color: rgb(201, 201, 201);
-  padding: 5px;
 }
 
-.editProductCard .descriptionInput {
+td {
+  text-align: center;
+  border-right: 1px solid rgb(200, 199, 199);
+}
+
+td input {
+  text-align: center;
+}
+
+.addProductDiv button {
+  padding: 5px;
+  width: 75px;
+  background-color: #7f9b9d;
+  color: white;
   border: none;
-  border-bottom: 1px solid rgb(201, 201, 201);
-  padding: 5px;
-  width: 150px;
+  border-radius: 5px;
 }
 
-.newProduct .newCategoryInput {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.newProduct td {
+  border: none;
+  border-bottom: 1px solid rgb(200, 199, 199);
+}
+
+.newProduct .imgPickerDiv {
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+  gap: 5px;
+}
+
+.newProduct .tdTitle {
+  padding-right: 10px;
+}
+
+.newProduct .handleUpdateDiv {
+  display: flex;
+  gap: 5px;
+}
+
+.newProduct button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  color: white;
+  border: none;
+}
+
+.newProduct .saveBtn {
+  background-color: #7f9b9d;
+}
+
+.newProduct .deleteBtn {
+  background-color: rgb(213, 91, 91);
+}
+
+.newProduct .addPic {
+  background-color: #7f9b9d;
+}
+
+tr:nth-child(even) {
+  background-color: hsl(0, 0%, 98%);
 }

@@ -35,7 +35,6 @@ export const ProductProvider = ({ children }) => {
 // ----- Creates a new product on MongoDB
 
   const createProduct = async (product) => {
-    console.log(product);
     try {
       const data = await fetch("http://localhost:3000/app/products/create/", {
         method: "POST",
@@ -95,11 +94,34 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+
+  // ----- Function that gets all of the categories from the database
+
   const getCategories = async () => {
     try {
       const data = await fetch("http://localhost:3000/app/categories/");
       const res = await data.json();
       setCategories(res);
+    } catch (error) {
+      setErrorMessage(error.message);
+      navigateTo("/error");
+    }
+  };
+
+
+// ----- Function that deletes one specific product in edit product card
+
+  const deleteProduct = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:3000/app/products/delete/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },      }
+    );
+       await res.json();
+      getProducts()
     } catch (error) {
       setErrorMessage(error.message);
       navigateTo("/error");
@@ -125,6 +147,7 @@ export const ProductProvider = ({ children }) => {
         categories,
         updateProduct,
         createProduct,
+        deleteProduct,
       }}
     >
       {children}
