@@ -1,0 +1,24 @@
+Graduation Project by Sara Pellnor
+
+Idea
+
+My idea is to create a classic e-commerce platform that sells makeup and skincare products. I will follow an inspiration page, Maria Åkerberg, to simplify the frontend work. I will create a login page, a product page where you can also view the cart using a drawer, an order page, and a checkout page.
+
+I will include the following elements:
+• Database with users, orders, and products
+• Payment solution with Stripe Checkout
+• Routing and clean URLs using React Router DOM.
+
+I will build the frontend using React and JSX. I will use MongoDB as the database for my products, users and orders. I will use Stripe as the payment solution and NodeJS and ExpressJS to create the backend. With React, it will be easy to create clean URLs.
+
+Brief Description of Purpose
+
+The purpose of the idea is to practice more on what I have learned during the course and have something nice and impressive to showcase on my portfolio page.
+Time Estimation / Activity and Timeline
+I will divide the work into sprints, with one sprint per week. Each sprint will be 40 hours, and I will work 8 hours a day, usually between 7:30 am and 4:00 pm. Below is the github project schedule:
+
+Sprint 1 Set up database and backend – MongoDB and ExpressJS
+Sprint 2 Frontend – React, URLs, and UX
+Sprint 3 Stripe Checkout - Functionalities
+Sprint 4 Testing and adjustments
+Sprint 5 Submission/Presentation

@@ -16,9 +16,9 @@ Projektet är organiserat på följande sätt:
 ```
 EXAMENSARBETE/
 |-- frontend/
-|   |-- src/
-|   |   |-- components/
-|   |   |-- pages/
+|   |-- rsc/
+|   |   |-- Components/
+|   |   |-- Pages/
 |   |   |-- App.js
 |   |   |-- index.js
 |   |-- package.json
@@ -33,7 +33,7 @@ EXAMENSARBETE/
 ```
 
 - **frontend:** Innehåller React-appen för användargränssnittet.
-  - **src:** Här finns React-komponenter och sidor.
+  - **rsc:** Här finns React-komponenter och sidor.
   - **package.json:** Paketinformation och skript för frontend.
 
 - **backend:** Innehåller Node.js och Express.js-servern för att hantera affärslogik och kommunicera med databasen.
@@ -58,6 +58,9 @@ git clone https://github.com/SaraPellnor/Examensarbete.git
 2. Installera beroenden för både frontend och backend:
 
 ```bash
+# I root-mappen
+npm install
+
 # I frontend-mappen
 cd frontend
 npm install
