@@ -1,20 +1,20 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import ProductPage from "../ProductPage/ProductPage";
-import DetailPage from "../DetailPage/DetailPage";
-import LoginPage from "../LoginPage/LoginPage";
-import OrderSuccess from "../OrderSuccess/OrderSuccess";
-import ErrorPage from "../ErrorPage/ErrorPage";
-import UserPage from "../UserPage/UserPage";
+import ProductPage from "../../Pages/ProductPage/ProductPage";
+import DetailPage from "../../Pages/DetailPage/DetailPage";
+import LoginPage from "../../Pages/LoginPage/LoginPage";
+import OrderSuccess from "../../Pages/OrderSuccess/OrderSuccess";
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
+import UserPage from "../../Pages/UserPage/UserPage";
 
 // ----- Using the lazy loading function fron react to show loding icon wile getting data
 
-const LazyOrderPage = lazy(() => import("../OrderPage/OrderPage"));
-const LazyCartDrawer = lazy(() => import("../CartDrawer/CartDrawer"));
+const LazyOrderPage = lazy(() => import("../../Pages/OrderPage/OrderPage"));
+const LazyCartDrawer = lazy(() => import("../../Pages/CartDrawer/CartDrawer"));
 
 import "./Main.css";
-import LoadingPage from "../LoadingPage/LoadingPage";
-import EditProducts from "../EditProducts/EditProducts";
+import LoadingPage from "../../Pages/LoadingPage/LoadingPage";
+import EditProducts from "../../Pages/EditProducts/EditProducts";
 
 const Main = () => {
   // ----- Configuring routes for different pages

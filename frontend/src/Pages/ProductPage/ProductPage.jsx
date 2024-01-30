@@ -4,7 +4,7 @@ import "./ProductPage.css";
 import LoadingPage from "../LoadingPage/LoadingPage.jsx";
 
 // ----- Lazily importing the ProductCard component for better code splitting
-const LazyProductCards = lazy(() => import("../ProductCard/ProductCard.jsx"));
+const LazyProductCards = lazy(() => import("../../Components/ProductCard/ProductCard.jsx"));
 
 // ----- Functional component representing the ProductPage
 const ProductPage = () => {
