@@ -111,7 +111,7 @@ const createUser = async (req, res) => {
     user.password = await bcrypt.hash(user.password, 10);
 
     // Create a new user in the database
-    const newUser = await UserModel.create(req.body);
+    const newUser = await UserModel.create(user);
     !newUser
       ? res.status(400).json("Unable to create the user")
       : // Create a session variable with user ID

@@ -84,7 +84,7 @@ const EditProductCard = () => {
   // ----- Handle creating a new product
 
   const handleCreate = () => {
-    const updatedProduct = {
+    const newProduct = {
       category: categoryList,
       in_stock: inStock,
       product_description: description,
@@ -92,13 +92,14 @@ const EditProductCard = () => {
       product_price: price,
       product_title: title,
     };
-    createProduct(updatedProduct);
+    createProduct(newProduct);
   };
 
   // ----- Ensure user is logged in and an admin before rendering
 
   useEffect(() => {
     (!loggedinUser || loggedinUser.is_admin == false) && navigateTo("/");
+    setImage(false)
   }, [products]);
 
   return (

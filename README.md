@@ -55,7 +55,7 @@ git clone https://github.com/SaraPellnor/Examensarbete.git
 ```
 Öppna mappen i VS Code
 
-2. Installera beroenden för både frontend och backend:
+2. Installera beroenden för både root,  frontend och backend:
 
 ```bash
 # I root-mappen
@@ -73,12 +73,9 @@ npm install
 3. Starta både frontend och backend:
 
 ```bash
-# I frontend-mappen
-npm npm run dev
+# I root-mappen
+npm start
 
-# I backend-mappen
-npm nodemon server.js
-```
 
 Nu bör du kunna öppna webbläsaren och gå till (http://localhost:5173) för att se den lokala versionen av hudvårdsbutiken.
 
