@@ -19,6 +19,7 @@ import { UserContext } from "../../Context/UserContext";
 import UserDropDown from "../UserDropDown/UserDropDown";
 
 import "./Header.css";
+import { ProductContext } from "../../Context/ProductContext";
 
 const Header = () => {
 
@@ -26,6 +27,7 @@ const Header = () => {
 
   const { cartNum } = useContext(OrderContext);
   const { loggedinUser } = useContext(UserContext);
+  const { getProducts } = useContext(ProductContext);
 
 
   // ----- State for controlling the display of user dropdown
@@ -50,7 +52,7 @@ const Header = () => {
         <div className="headerBottomTop">
           <div className="logoDiv">
             <Link to={"/"}>
-              <img src="../../../src/assets/Logo.png" alt="Logo" />
+              <img onClick={getProducts} src="../../../src/assets/Logo.png" alt="Logo" />
             </Link>
           </div>
           <div className="searchDiv">

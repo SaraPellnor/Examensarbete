@@ -15,7 +15,24 @@ Content-Type: application/json
 
 {
     "user_ID": "65968c881e59c32e5d747292",
-    "product_ID": ["659d3071ff5079eaa9154a63", "659d318c11a3361a36d55d0a", "659d329511a3361a36d55d0c"],
+    "productList": [
+      {
+        "productId": "659d318c11a3361a36d55d0a",
+        "quantity": 7
+      },
+      {
+        "productId": "659d3071ff5079eaa9154a63",
+        "quantity": 3
+      }
+    ],
+    "address": {
+      "city": "Frillesås",
+      "country": "SE",
+      "line1": "Brearedsvägen 228",
+      "line2": null,
+      "postal_code": "43963",
+      "state": null
+    },
     "shipped": false,
     "total_price": 43,
     "date": "24 mars 2024"

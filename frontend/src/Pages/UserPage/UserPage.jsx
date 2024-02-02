@@ -16,7 +16,7 @@ import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import "./UserPage.css";
 
 const UserPage = () => {
-  const { user, getUser, loggedinUser, updateUser } = useContext(UserContext);
+  const { user, getUser, loggedinUser, updateUser, setErrorMessage } = useContext(UserContext);
   const [edit, setEdit] = useState(false);
   const [admin, setAdmin] = useState(loggedinUser.is_admin);
   const [username, setUsername] = useState(false);
@@ -46,7 +46,8 @@ const UserPage = () => {
   };
 
   useEffect(() => {
-    loggedinUser && getUser();
+    setErrorMessage("Du är inte inloggad!")
+    loggedinUser ? getUser() : navigateTo("/error");
   }, [loggedinUser]);
 
   return (

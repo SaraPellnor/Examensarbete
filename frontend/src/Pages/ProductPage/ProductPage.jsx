@@ -10,6 +10,7 @@ const LazyProductCards = lazy(() => import("../../Components/ProductCard/Product
 const ProductPage = () => {
   return (
     <div className="productPage">
+       <img src="../../../src/assets/hero.png" alt="Logo" />
       <Suspense fallback={<LoadingPage />}>
         <LazyProductCards />
       </Suspense>

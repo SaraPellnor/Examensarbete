@@ -1,14 +1,9 @@
-// ---- Import Joi schema and controller functions from the specified file
 
 const {
-  checkout
+  checkout, getOrder
   } = require("./stripe.controllers");
-// const { productJoiSchema } = require("./products.model");
 
 
-// ---- Import validation middleware for use when needed
-
-// const { validation } = require("../middlewares");
 const express = require("express");
   
 
@@ -22,18 +17,14 @@ const express = require("express");
   // ---- Define route handlers for different HTTP methods and paths
   
   stripeRoute.post("/stripe/checkout", checkout);
+  stripeRoute.get("/stripe/order/:id", getOrder);
+
   
-  // productRoute.get("/products/:id", getProductsById);
-  
-  // productRoute.post("/products/create", validation(productJoiSchema), createProduct);
-  
-  // productRoute.post("/products/update/:id", validation(productJoiSchema), changeProduct);
-  
-  // productRoute.delete("/products/delete/:id", deleteProduct);
+
   
 
 
-  // ---- Export the productRoute for use in other files
+  // ---- Export the stripeRoute for use in other files
 
   module.exports = { stripeRoute };
   

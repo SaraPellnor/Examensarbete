@@ -14,10 +14,11 @@ export const OrderProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartNum, setCartNum] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [orderErrorMessage, setErrorMessage] = useState();
 
   // ----- Accessing user-related context and navigation
 
-  const { loggedinUser, setErrorMessage } = useContext(UserContext);
+  const { loggedinUser } = useContext(UserContext);
   const navigateTo = useNavigate();
 
   // ----- Function to fetch user orders from the server
@@ -38,10 +39,10 @@ export const OrderProvider = ({ children }) => {
         if (res) {
           setOrders(res);
         } else {
-setOrders("Du har inga ordrar ännu")
+          setOrders("Du har inga ordrar ännu");
         }
       } else {
-        setErrorMessage(data.status);
+        setErrorMessage("Du är inte inloggad");
         navigateTo("/error");
       }
     } catch (error) {
@@ -89,7 +90,31 @@ setOrders("Du har inga ordrar ännu")
       }
 
       const res = await data.json();
+      localStorage.setItem("order_id", JSON.stringify(res.session_id));
+
       window.location = res.url;
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(error.message);
+      navigateTo("/error");
+    }
+  };
+
+  
+  // ----- gets stripe order from stripe database to store the delivery address and total price if use kupons.
+
+  const getStripeOrder = async () => {
+    const id = JSON.parse(localStorage.getItem("order_id"));
+    try {
+      const data = await fetch(`http://localhost:3000/app/stripe/order/${id}`);
+
+      if (!data.ok) {
+        setErrorMessage(data.status);
+        navigateTo("/error");
+      }
+
+      const res = await data.json();
+      createOrder(res.customer_details.address, res.amount_total);
     } catch (error) {
       console.log(error);
       setErrorMessage(error.message);
@@ -117,7 +142,7 @@ setOrders("Du har inga ordrar ännu")
 
   // ----- Function to create a new order
 
-  const createOrder = async () => {
+  const createOrder = async (orderAddress, price) => {
     if (
       cart.length === 0 ||
       loggedinUser === undefined ||
@@ -130,14 +155,18 @@ setOrders("Du har inga ordrar ännu")
 
     try {
       const orderList = cart.map((product) => {
-        return product._id;
+        return {
+          productId: product._id,
+          quantity: product.quantity,
+        };
       });
 
       const orderData = {
         user_ID: loggedinUser.user_id,
-        product_ID: orderList,
+        productList: orderList,
+        address: orderAddress,
         shipped: false,
-        total_price: totalPrice,
+        total_price: price * 0.01,
         date: date(),
       };
 
@@ -301,6 +330,8 @@ setOrders("Du har inga ordrar ännu")
         createOrder,
         totalPrice,
         totalPriceFunction,
+        orderErrorMessage,
+        getStripeOrder,
       }}
     >
       {children}

@@ -11,7 +11,7 @@ const OrderSuccess = () => {
 
   // ----- Destructuring necessary functions and data from context
 
-  const { cart, createOrder } = useContext(OrderContext);
+  const { cart, getStripeOrder } = useContext(OrderContext);
   const { loggedinUser } = useContext(UserContext);
 
 
@@ -25,9 +25,9 @@ const OrderSuccess = () => {
       loggedinUser !== false
 
     ) {
-      createOrder();
+      getStripeOrder();
     }
-  }, [cart, loggedinUser]);
+  }, [loggedinUser]);
 
   return (
     <div className="orderSuccess">
