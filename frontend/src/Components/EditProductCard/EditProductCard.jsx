@@ -14,7 +14,7 @@ import "./EditProductCard.css";
 const EditProductCard = () => {
   const navigateTo = useNavigate();
 
-  const { loggedinUser } = useContext(UserContext);
+  const { loggedinUser, setErrorMessage } = useContext(UserContext);
 
   const {
     products,
@@ -98,8 +98,9 @@ const EditProductCard = () => {
   // ----- Ensure user is logged in and an admin before rendering
 
   useEffect(() => {
-    (!loggedinUser || loggedinUser.is_admin == false) && navigateTo("/");
-    setImage(false)
+    setErrorMessage("Du är inte behörig");
+    (!loggedinUser || loggedinUser.is_admin == false) && navigateTo("/error");
+    setImage(false);
   }, [products]);
 
   return (

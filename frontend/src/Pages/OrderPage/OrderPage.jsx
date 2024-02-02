@@ -8,16 +8,13 @@ import ReturnBtn from "../../Components/ReturnBtn/ReturnBtn";
 
 import "./OrderPage.css";
 
-
 const OrderPage = () => {
-
-
   // ----- Destructuring necessary functions and data from context
 
-  const { orders, shippedFunction, orderRemove, getOrders } = useContext(OrderContext);
+  const { orders, shippedFunction, orderRemove, getOrders } =
+    useContext(OrderContext);
   const { products } = useContext(ProductContext);
   const { loggedinUser } = useContext(UserContext);
-
 
   // ----- Fetching user orders on component mount
 
@@ -29,58 +26,60 @@ const OrderPage = () => {
     <div className="orderPage">
       {typeof orders !== "string" ? (
         <div className="orderPageDiv">
-
-
           {/* Mapping through user orders */}
 
           {orders.map((order) => (
             <div key={order._id}>
               <div className="order">
                 <div className="orderInfo">
-
-
                   {/* Displaying customer information for admin */}
 
-                  {loggedinUser.ia_admin && (
-                    <p>Customer: {loggedinUser.username}</p>
+                  {loggedinUser.is_admin && (
+                    <div>
+                      <p>Kund: {loggedinUser.username}</p>
+                      <p>Leveransadress:</p>
+                      <p>{order.address.line1}</p>
+                      <p>{order.address.postal_code}</p>
+                      <p>{order.address.city}</p>
+
+                    </div>
+                    
                   )}
                   <p>Orderdatum: {order.date}</p>
-
 
                   {/* Displaying order status and enabling shipment update for admin */}
 
                   <p
                     style={{ color: order.shipped ? "green" : "red" }}
-                    onClick={() => loggedinUser.is_admin && shippedFunction(order)}
+                    onClick={() =>
+                      loggedinUser.is_admin && shippedFunction(order)
+                    }
                   >
                     {order.shipped ? "Skickad" : "Ej skickad"}
                   </p>
                 </div>
 
-
                 {/* Mapping through products in the order */}
 
-                {order.product_ID.map((id) => {
-                  const product = products.find((item) => item._id == id);
-                  return product ? (
-                    <div key={product._id} className="product">
+                {order.productList.map((product) => {
+                  const productItem = products.find((item) => item._id == product.productId);
+                  return productItem ? (
+                    <div key={productItem._id} className="product">
                       <img
-                        src={`../../../src/assets/${product.product_image}`}
-                        alt={product.product_image}
+                        src={`../../../src/assets/${productItem.product_image}`}
+                        alt={productItem.product_image}
                       />
                       <div className="productInfo">
-                        <p>{product.product_title}</p>
+                        <p>{productItem.product_title}</p>
                         <div className="productPrice">
-                          <p>{product.product_price},00 SEK</p>
-                          <div className="quantity">1</div>
+                          <p>{productItem.product_price},00 SEK</p>
+                          <div className="quantity">{product.quantity}</div>
                         </div>
                       </div>
                     </div>
                   ) : null;
                 })}
                 <div className="orderInfo">
-
-
                   {/* Displaying total price and providing archive button for admin */}
 
                   <p>{order.total_price},00 SEK</p>
@@ -100,8 +99,6 @@ const OrderPage = () => {
           <div className="OrderPageDivBottom"></div>
         </div>
       ) : (
-
-
         // ----- Displaying a message if the user has no orders
 
         <div className="OrderPageEmpty">
@@ -109,9 +106,8 @@ const OrderPage = () => {
         </div>
       )}
 
-
       {/* Return button at the bottom of the page */}
-      
+
       <div className="orderPageBottom">
         <ReturnBtn />
       </div>

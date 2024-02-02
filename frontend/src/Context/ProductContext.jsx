@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 
-import { createContext, useState, useEffect, useContext } from "react";
-import { UserContext } from "./UserContext";
+import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const ProductContext = createContext();
@@ -13,10 +12,10 @@ export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [productDetail, setProductDetail] = useState({});
   const [categories, setCategories] = useState([]);
+  const [productErrorMessage, setErrorMessage] = useState();
 
   // ----- Accessing user-related context and navigation
 
-  const { setErrorMessage } = useContext(UserContext);
   const navigateTo = useNavigate();
 
   // ----- Function to fetch all products
@@ -31,6 +30,22 @@ export const ProductProvider = ({ children }) => {
       navigateTo("/error");
     }
   };
+
+
+// ----- Function that returns products by category
+
+const getProductByCategory = async (id) => {
+  try {
+    const res = await fetch("http://localhost:3000/app/products/");
+    const data = await res.json();
+    const newProductArray = data.filter((item) => item.category.includes(id));
+
+    setProducts(newProductArray);
+  } catch (error) {
+    setErrorMessage(error.message);
+    navigateTo("/error");
+  }
+}
 
 // ----- Creates a new product on MongoDB
 
@@ -148,6 +163,9 @@ export const ProductProvider = ({ children }) => {
         updateProduct,
         createProduct,
         deleteProduct,
+        productErrorMessage,
+        getProductByCategory,
+        getProducts,
       }}
     >
       {children}

@@ -1,4 +1,5 @@
-import { useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
@@ -16,7 +17,9 @@ const ProductCard = () => {
   const { products } = useContext(ProductContext);
   const { addToCart } = useContext(OrderContext);
 
+useEffect(() =>{
 
+},[products])
   return (
 
 

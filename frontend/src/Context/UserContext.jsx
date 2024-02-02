@@ -13,7 +13,7 @@ export const UserProvider = ({ children }) => {
 
   const [users, setUsers] = useState([]);
   const [loggedinUser, setLoggedinUser] = useState(false);
-  const [errorMessage, setErrorMessage] = useState();
+  const [userErrorMessage, setErrorMessage] = useState();
   const [comfirmedPassword, setComfirmedPassword] = useState("");
   const [user, setUser] = useState();
 
@@ -28,6 +28,7 @@ export const UserProvider = ({ children }) => {
     try {
       const data = await fetch(`http://localhost:3000/app/user/${loggedinUser.user_id}`);
       const res = await data.json();
+      console.log(res.ok);
       setUser(res);
     } catch (error) {
       console.log(error);
@@ -195,9 +196,9 @@ export const UserProvider = ({ children }) => {
         registrate,
         loggedinUser,
         logOutUser,
-        errorMessage,
-        setComfirmedPassword,
+        userErrorMessage,
         setErrorMessage,
+        setComfirmedPassword,
         auth,
         getUser,
         user,
