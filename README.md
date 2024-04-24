@@ -86,6 +86,6 @@ Du kan konfigurera anslutningen till MongoDB genom att lägga till en .env i `ba
 SESSION_CONNECTION_KEY=
 DB_CONNECTION_URL=
 STRIPE_CONNECTION_KEY=
-CLIENT_URL=
+CLIENT_URL=http://localhost:5173
 
 ---
