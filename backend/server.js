@@ -1,12 +1,10 @@
 //  ----Load environment variables from a .env file
 
-require("dotenv").config();
-
-
+// require("dotenv").config();
 
 //  ---- Import cors for to allow orgin to fetch from frontend
 
-const cors = require("cors")
+const cors = require("cors");
 
 // ---- Import necessary libraries
 
@@ -14,12 +12,8 @@ const express = require("express");
 const session = require("express-session");
 // const cookieParser = require("cookie-parser");
 
-
-
 const app = express();
 const mongoose = require("mongoose");
-
-
 
 // ---- Import route handlers
 
@@ -28,7 +22,6 @@ const { productRoute } = require("./rsc/products/products.router");
 const { userRoute } = require("./rsc/user/user.router");
 const { categoryRoute } = require("./rsc/categories/categories.router");
 const { stripeRoute } = require("./rsc/stripe/stripe.router");
-
 
 // ---- Configure cors and session middleware
 
@@ -43,25 +36,21 @@ app.use(
     resave: false, // Do not save the session if it hasn't changed
     saveUninitialized: true, // Save new sessions
     cookie: {
-      maxAge: 3600000,  // Session cookie will expire after 1 hour (in milliseconds)
+      maxAge: 3600000, // Session cookie will expire after 1 hour (in milliseconds)
       secure: false, //not https wile developing
       httpOnly: true, // only fetch, not for axios
-      sameSite: 'strict' // on the sam domen
+      sameSite: "strict", // on the sam domen
     },
   })
 );
 
-
 // ---- Get connection url to mongoDB from environment variables
 
-const mongoDBConnection = process.env.DB_CONNECTION_URL
-
+const mongoDBConnection = process.env.DB_CONNECTION_URL;
 
 // ---- Parse incoming JSON requests
 
 app.use(express.json());
-
-
 
 // ---- Define routes for different resources
 
@@ -70,7 +59,6 @@ app.use("/app", orderRoute);
 app.use("/app", productRoute);
 app.use("/app", categoryRoute);
 app.use("/app", stripeRoute);
-
 
 // ---- Connect to MongoDB using Mongoose
 
@@ -82,8 +70,6 @@ const init = async () => {
     console.log("Server is up and running at http://localhost:3000")
   );
 };
-
-
 
 // ---- Call the initialization function
 
