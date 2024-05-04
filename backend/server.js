@@ -1,10 +1,10 @@
 //  ----Load environment variables from a .env file
 
-// require("dotenv").config();
+require("dotenv").config();
 
 //  ---- Import cors for to allow orgin to fetch from frontend
 
-// const cors = require("cors");
+const cors = require("cors");
 
 // ---- Import necessary libraries
 
@@ -25,24 +25,24 @@ const { stripeRoute } = require("./rsc/stripe/stripe.router");
 
 // ---- Configure cors and session middleware
 
-// app.use(
-//   cors({
-//     origin: "http://localhost:5173",
-//     credentials: true,
-//   }),
-// cookieParser(),
-app.session({
-  secret: process.env.SESSION_CONNECTION_KEY, // Secret key used to sign the session ID cookie
-  resave: false, // Do not save the session if it hasn't changed
-  saveUninitialized: true, // Save new sessions
-  cookie: {
-    maxAge: 3600000, // Session cookie will expire after 1 hour (in milliseconds)
-    secure: false, //not https wile developing
-    httpOnly: true, // only fetch, not for axios
-    sameSite: "strict", // on the sam domen
-  },
-});
-// );
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  }),
+  // cookieParser(),
+  session({
+    secret: process.env.SESSION_CONNECTION_KEY, // Secret key used to sign the session ID cookie
+    resave: false, // Do not save the session if it hasn't changed
+    saveUninitialized: true, // Save new sessions
+    cookie: {
+      maxAge: 3600000, // Session cookie will expire after 1 hour (in milliseconds)
+      secure: false, //not https wile developing
+      httpOnly: true, // only fetch, not for axios
+      sameSite: "strict", // on the sam domen
+    },
+  })
+);
 
 // ---- Get connection url to mongoDB from environment variables
 
