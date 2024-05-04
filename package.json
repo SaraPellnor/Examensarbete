@@ -3,7 +3,7 @@
     "start": "npm-run-all --parallel frontend start-server",
     "build": "npm-run-all --parallel frontend:build start-server",
     "frontend": "cd frontend && npm run dev",
-    "frontend:build": "cd frontend && npm run build",
+    "frontend:build": "cd frontend && npx run build",
     "start-server": "cd backend && npx nodemon server.js"
   },
   "devDependencies": {
