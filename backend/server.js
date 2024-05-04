@@ -1,6 +1,6 @@
 //  ----Load environment variables from a .env file
 
-// require("dotenv").config();
+require("dotenv").config();
 
 //  ---- Import cors for to allow orgin to fetch from frontend
 
