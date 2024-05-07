@@ -1,7 +1,7 @@
 # Projektets namn: EXAMENSARBETE
 
 ## Beskrivning
-Det här projektet är en e-handelsplattform för hudvårdsprodukter. Den består av både en frontend och en backend, där frontend är utvecklad med React (JavaScript) och backend är byggd med Node.js och Express.js. Databasen som används är MongoDB och betallösningen är Stripe checkout
+Det här projektet är en e-handelsplattform med ui baserad på en befintlig e-handel för hudvårdsprodukter. Den består av både en frontend och en backend, där frontend är utvecklad med React (JavaScript) och backend är byggd med Node.js och Express.js. Databasen som används är MongoDB och betallösningen är Stripe checkout
 
 ## Beroenden
 
